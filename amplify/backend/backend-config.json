@@ -1,0 +1,14 @@
+{
+    "auth": {
+        "cognito323263d5": {
+            "service": "Cognito",
+            "providerPlugin": "awscloudformation"
+        }
+    },
+    "api": {
+        "amplifygatsbyexample": {
+            "service": "AppSync",
+            "providerPlugin": "awscloudformation"
+        }
+    }
+}
