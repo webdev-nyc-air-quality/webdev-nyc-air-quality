@@ -1,0 +1,19 @@
+{
+    "airquality": {
+        "awscloudformation": {
+            "AuthRoleName": "my-aws-project-20190413233204-authRole",
+            "UnauthRoleArn": "arn:aws:iam::817876423270:role/my-aws-project-20190413233204-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::817876423270:role/my-aws-project-20190413233204-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "my-aws-project-20190413233204-deployment",
+            "UnauthRoleName": "my-aws-project-20190413233204-unauthRole",
+            "StackName": "my-aws-project-20190413233204",
+            "StackId": "arn:aws:cloudformation:us-east-2:817876423270:stack/my-aws-project-20190413233204/e11a8430-5e65-11e9-a02c-025c218c397c"
+        },
+        "categories": {
+            "auth": {
+                "cognito704b3e59": {}
+            }
+        }
+    }
+}
