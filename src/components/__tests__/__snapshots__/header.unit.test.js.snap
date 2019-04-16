@@ -4,7 +4,7 @@ exports[`Header renders correctly 1`] = `
 <div
   style={
     Object {
-      "background": "rebeccapurple",
+      "background": "SteelBlue",
       "marginBottom": "1.45rem",
     }
   }
