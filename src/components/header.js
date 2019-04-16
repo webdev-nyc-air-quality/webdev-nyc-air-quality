@@ -1,15 +1,13 @@
 import React from 'react'
 import { Link } from 'gatsby'
-
 import { navigate } from '@reach/router'
-
 import { logout, isLoggedIn } from "../utils/auth"
 import { Auth } from 'aws-amplify'
 
 const Header = ({ siteTitle }) => (
   <div
     style={{
-      background: 'rebeccapurple',
+      background: 'SteelBlue',
       marginBottom: '1.45rem',
     }}
   >
