@@ -4,14 +4,14 @@
   "version": "1.0.0",
   "author": "Nader Dabit <dabit3.@gmail.com>",
   "dependencies": {
-    "aws-amplify": "^1.0.5",
-    "aws-amplify-react": "^1.0.5",
-    "gatsby": "next",
-    "gatsby-plugin-manifest": "next",
-    "gatsby-plugin-offline": "next",
-    "gatsby-plugin-react-helmet": "next",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
+    "aws-amplify": "^1.1.26",
+    "aws-amplify-react": "^2.3.6",
+    "gatsby": "^2.3.23",
+    "gatsby-plugin-manifest": "^2.0.29",
+    "gatsby-plugin-offline": "^2.0.25",
+    "gatsby-plugin-react-helmet": "^3.0.12",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0"
   },
   "keywords": [
@@ -22,16 +22,18 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write '**/*.js'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "devDependencies": {
-    "prettier": "^1.13.7"
+    "babel-jest": "^24.7.1",
+    "babel-preset-gatsby": "^0.1.11",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.7.1",
+    "prettier": "^1.13.7",
+    "react-test-renderer": "^16.8.6"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "resolutions": {
-    "graphql": "0.13.0"
   }
 }
