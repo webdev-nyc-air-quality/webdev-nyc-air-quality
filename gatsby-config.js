@@ -17,5 +17,12 @@ module.exports = {
       },
     },
     'gatsby-plugin-offline',
+    {
+      resolve: 'gatsby-source-googlemaps-geocoding',
+      options: {
+        key: 'AIzaSyDhb1-mtflTfY5fbhCpuVOB_ph8329fKKQ',
+        address: `New York, NY`
+      }
+    }
   ],
 }

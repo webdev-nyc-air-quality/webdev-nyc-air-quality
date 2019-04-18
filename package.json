@@ -10,6 +10,7 @@
     "gatsby-plugin-manifest": "^2.0.29",
     "gatsby-plugin-offline": "^2.0.25",
     "gatsby-plugin-react-helmet": "^3.0.12",
+    "gatsby-source-googlemaps-geocoding": "^1.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0"

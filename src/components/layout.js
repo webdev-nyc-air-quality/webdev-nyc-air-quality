@@ -17,6 +17,7 @@ const Layout = ({ children, data }) => (
         }
       }
     `}
+    
     render={data => (
       <>
         <Helmet
