@@ -1,0 +1,21 @@
+.container {
+  position: relative;
+  display: block;
+  float: right;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: steelblue;
+}
+.button {
+  padding: 0;
+  width: 50px;
+  border: 0;
+  background-color: inherit;
+  color: white;
+  cursor: pointer;
+  outline: 0;
+  font-size: 40px;
+}
