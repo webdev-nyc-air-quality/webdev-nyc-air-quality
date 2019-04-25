@@ -26,6 +26,9 @@ const Header = ({ siteTitle }) => (
           {siteTitle}
         </Link>
       </h1>
+      <h4 style={{ color: 'white', margin: 0 }}>
+        Dataset: Lorem ipsum dolor
+      </h4>
       {
         isLoggedIn() && (
           <p
