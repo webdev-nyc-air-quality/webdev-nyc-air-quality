@@ -9,15 +9,15 @@ const Header = ({ siteTitle }) => (
   <div
     style={{
       background: 'SteelBlue',
-      marginBottom: '1.45rem',
+      /* marginBottom: '1.45rem', */
     }}
   >
     <div
-      style={{
+      /* style={{
         margin: '0 auto',
         maxWidth: 960,
         padding: '1.45rem 1.0875rem',
-      }}
+      }} */
     >
       <h1 style={{ margin: 0 }}>
         <Link

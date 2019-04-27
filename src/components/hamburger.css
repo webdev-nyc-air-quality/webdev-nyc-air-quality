@@ -1,15 +1,35 @@
 .container {
-  position: relative;
+  margin: 0px 10px;
+  position: absolute;
   display: block;
-  float: right;
+  float: left;
+  border: 1px solid lightgray;
+  background-color: #f1f1f1;
+  width: fit-content;
 }
+
+.container1 {
+  float: right;
+  margin-top: -50px; 
+  margin-right: 130px;
+}
+
+.links {
+  border: none;
+  padding: 0px 8px;
+  font-size: 13px;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
 ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  background-color: steelblue;
+  background-color: azure;
+  border: 1px solid lightgray;
 }
-.button {
+.buttonHam {
   padding: 0;
   width: 50px;
   border: 0;

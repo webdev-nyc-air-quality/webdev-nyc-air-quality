@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'gatsby'
 import "./hamburger.css";
 
 class Hamburger extends Component {
@@ -17,18 +18,17 @@ class Hamburger extends Component {
 
     render() {
         return (
-            <div className="container" ref={this.container}>
-                <button type="button" className="button" onClick={this.handleHamburgerClick}>
+            <div className="container1" ref={this.container}>
+                <button type="button" className="buttonHam" onClick={this.handleHamburgerClick}>
                     ☰
                 </button>
                 {this.state.open && (
                     <div className="container">
-                        <ul>
-                            <li>Register</li>
-                            <li>Login</li>
-                            <li>About</li>
-                            <li>Data source references</li>
-                        </ul>
+                        <p className="links"><Link to="/app/signup">Register</Link></p>
+                        <p className="links"><Link to="/app/login">Login</Link></p>
+                        <p className="links"><Link to="/app/about">About</Link></p>
+                        <p className="links"><Link to="/app/profile">Profile</Link></p>
+                        <p className="links">Data source references</p>
                     </div>
                 )}
             </div>
