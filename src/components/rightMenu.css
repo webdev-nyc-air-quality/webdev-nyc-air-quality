@@ -1,0 +1,33 @@
+.menuContainer {
+    width: 40%;
+    float: right;
+    height: 100%;
+    background-color: #f1f1f1;
+}
+
+.tabMenu {
+    padding: 0px 8px;
+    border-bottom: 1px solid black;
+}
+
+.tabContent {
+    padding: 0px 8px;
+}
+
+.tabMenuItem {
+    border: 1px solid black;
+    padding: 0px 5px;
+    margin: 0px 20px;
+    cursor: pointer;
+}
+
+.tabList {
+    height: max-content;
+    border: 1px solid black;
+    padding: 8px;
+}
+
+.tabList p {
+    border-bottom: 1px solid black;
+    padding: 0px 8px;
+}
