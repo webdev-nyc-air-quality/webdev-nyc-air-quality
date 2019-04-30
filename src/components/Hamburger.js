@@ -9,11 +9,10 @@ class Hamburger extends Component {
     };
 
     handleHamburgerClick = () => {
-        this.setState(state => {
-            return {
-                open: !state.open,
-            };
-        });
+
+        this.setState({
+            open: !this.state.open
+        })
     };
 
     render() {
