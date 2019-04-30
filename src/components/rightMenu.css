@@ -6,19 +6,22 @@
 }
 
 .tabMenu {
-    padding: 0px 8px;
-    border-bottom: 1px solid black;
+    margin: 8px;
 }
 
 .tabContent {
-    padding: 0px 8px;
+    margin: 8px;
 }
 
 .tabMenuItem {
     border: 1px solid black;
-    padding: 0px 5px;
-    margin: 0px 20px;
+    margin: 0px auto;
+    width: 33.33%;
     cursor: pointer;
+}
+
+.tabSetting {
+    display: none;
 }
 
 .tabList {
@@ -30,4 +33,36 @@
 .tabList p {
     border-bottom: 1px solid black;
     padding: 0px 8px;
+    margin-bottom: 0px;
+}
+
+.tabDiscuss {
+    display: none;
+}
+
+.discussContainer {
+    border: 1px solid lightgrey;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 8px;
+    margin: 8px 0px;
+}
+
+.discussContainer::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.discussContainer img {
+    float: left;
+    max-width: 70px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+.discussContainer span {
+    float: right;
+    color: gray;
 }
