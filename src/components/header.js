@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import { navigate } from '@reach/router'
 import { logout, isLoggedIn } from "../utils/auth"
 import { Auth } from 'aws-amplify'
-import { white } from 'ansi-colors';
+import Hamburger from '../components/Hamburger'
 
 const Header = ({ siteTitle }) => (
   <div
@@ -31,6 +31,7 @@ const Header = ({ siteTitle }) => (
           >Sign Out</p>
         )
       }
+      <Hamburger />
     </div>
   </div>
 )
