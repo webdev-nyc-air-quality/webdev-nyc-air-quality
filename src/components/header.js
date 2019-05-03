@@ -3,21 +3,15 @@ import { Link } from 'gatsby'
 import { navigate } from '@reach/router'
 import { logout, isLoggedIn } from "../utils/auth"
 import { Auth } from 'aws-amplify'
+import Hamburger from '../components/Hamburger'
 
 const Header = ({ siteTitle }) => (
   <div
     style={{
       background: 'SteelBlue',
-      marginBottom: '1.45rem',
     }}
   >
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '1.45rem 1.0875rem',
-      }}
-    >
+    <div>
       <h1 style={{ margin: 0 }}>
         <Link
           to="/"
@@ -26,6 +20,7 @@ const Header = ({ siteTitle }) => (
           {siteTitle}
         </Link>
       </h1>
+      <h4 style={{ color: 'white', margin: 0}}>Dataset: Lorem ipsum dolor</h4>
       {
         isLoggedIn() && (
           <p
@@ -36,6 +31,7 @@ const Header = ({ siteTitle }) => (
           >Sign Out</p>
         )
       }
+      <Hamburger />
     </div>
   </div>
 )
