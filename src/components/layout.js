@@ -27,6 +27,13 @@ const Layout = ({ children, data }) => (
           ]}
         >
           <html lang="en" />
+          <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggoyr0ixcbmqv3xipma34md+dh/1fq784/j6cy/ijtquohcwr7x9jvorxt2mzw1t"
+            crossorigin="anonymous"
+          />
+
         </Helmet>
         <Header siteTitle={data.site.siteMetadata.title} />
         <div>
