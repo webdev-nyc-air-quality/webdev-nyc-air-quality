@@ -1,0 +1,7 @@
+/*
+  First tab (settings) gets a larger font and smaller padding
+*/
+nav.nav-tabs a:first-child {
+  font-size: 1.5rem;
+  padding: 0.25rem 1rem;
+}
