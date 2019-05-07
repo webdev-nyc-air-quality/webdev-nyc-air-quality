@@ -17,7 +17,7 @@ const Layout = ({ children, data }) => (
       }
     `}
     render={data => (
-      <>
+      <main style={styles.main}>
         <Helmet
           title={data.site.siteMetadata.title}
           meta={[
@@ -34,13 +34,22 @@ const Layout = ({ children, data }) => (
           />
         </Helmet>
         <Header siteTitle={data.site.siteMetadata.title} />
-        <div>
+        <section style={styles.section}>
           {children}
-        </div>
-      </>
+        </section>
+      </main>
     )}
   />
 )
+
+const styles = {
+  main: {
+    height: 'calc(100vh - 75px)',
+  },
+  section: {
+    height: '100%',
+  },
+}
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
