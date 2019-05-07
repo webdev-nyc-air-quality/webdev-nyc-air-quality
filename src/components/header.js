@@ -1,50 +1,83 @@
 import React from 'react'
-import { Link } from 'gatsby'
-import { navigate } from '@reach/router'
-import { logout, isLoggedIn } from "../utils/auth"
+import { navigate } from 'gatsby'
 import { Auth } from 'aws-amplify'
-import Hamburger from '../components/Hamburger'
+import { Nav, Navbar, NavDropdown } from 'react-bootstrap'
+
+import { logout, isLoggedIn } from "../utils/auth"
 
 const Header = ({ siteTitle }) => (
-  <div
-    style={{
-      background: 'SteelBlue',
-    }}
-  >
-    <div>
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={styles.headerTitle}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-      <h4 style={{ color: 'white', margin: 0}}>Dataset: Lorem ipsum dolor</h4>
-      {
-        isLoggedIn() && (
-          <p
-            onClick={
-              () => Auth.signOut().then(logout(() => navigate('/app/login'))).catch(err => console.log('eror:', err))
-            }
-            style={styles.link}
-          >Sign Out</p>
-        )
+  <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar.Brand
+      style={styles.brand}
+      onClick={() => navigate('/')}
+    >
+      Neighborhood Data
+    </Navbar.Brand>
+    <Nav className="mr-auto">
+      <Nav.Item className="text-secondary">Dataset: cultural institutions</Nav.Item>
+    </Nav>
+    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+    <Navbar.Collapse id="responsive-navbar-nav">
+      <Nav className="mr-auto">
+      </Nav>
+      { isLoggedIn()
+        ? (
+            <Nav>
+              <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+                <NavDropdown.Item
+                  style={styles.blue}
+                  onClick={
+                    () => Auth.signOut().then(
+                      logout(() => navigate('/'))
+                    ).catch(err => console.log('eror:', err))
+                  }
+                >
+                  Logout
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  style={styles.blue}
+                  onClick={() => navigate('/')}
+                >
+                  Data sources
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+          )
+        : (
+            <Nav>
+              <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+                <NavDropdown.Item
+                  style={styles.blue}
+                  onClick={() => navigate('/app/register')}
+                >
+                  Register
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  style={styles.blue}
+                  onClick={() => navigate('/app/login')}
+                >
+                  Login
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  style={styles.blue}
+                  onClick={() => navigate('/')}
+                >
+                  Data sources
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+          )
       }
-      <Hamburger />
-    </div>
-  </div>
+    </Navbar.Collapse>
+  </Navbar>
 )
 
 const styles = {
-  headerTitle: {
-    color: 'white',
-    textDecoration: 'none',
-  },
-  link: {
+  brand: {
     cursor: 'pointer',
-    color: 'white',
-    textDecoration: 'underline'
+  },
+  blue: {
+    color: '#007bff',
   }
 }
 
