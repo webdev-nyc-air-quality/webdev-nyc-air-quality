@@ -48,7 +48,7 @@ const Header = ({ siteTitle }) => (
               <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                 <NavDropdown.Item
                   style={styles.blue}
-                  onClick={() => navigate('/app/register')}
+                  onClick={() => navigate('/app/signup')}
                 >
                   Register
                 </NavDropdown.Item>
