@@ -1,10 +1,10 @@
 import React from 'react'
 import { render, cleanup } from 'react-testing-library'
 
-import Header from '../header'
-import { isLoggedIn }from '../../utils/auth'
+import Header from '../../src/components/header'
+import { isLoggedIn } from '../../src/utils/auth'
 
-jest.mock('../../utils/auth')
+jest.mock('../../src/utils/auth')
 afterEach(cleanup)
 
 describe('Header component', () => {
