@@ -16,11 +16,12 @@ class Geocode extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
-      location: []
+      location: [],
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
-componentDidMount() {
-    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=${process.env.GATSBY_GMAPS_API_KEY}`)
+geocodeAddress(address) {
+    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.GATSBY_GMAPS_API_KEY}`)
       .then(res => res.json())
       .then(
         (result) => {
@@ -41,10 +42,24 @@ componentDidMount() {
       )
   }
 
+  handleChange(event) {
+    this.setState({address: event.target.address});
+  }
+
+  handleSubmit(event){
+    event.preventDefault();
+    this.geocodeAddress(document.querySelector('#address').value);
+  }
+
   render() {
      const { location } = this.state;
     return(
      <div>
+       <p> Enter address </p>
+       <form onSubmit={this.handleSubmit}> 
+         <input type="text" id="address" />
+         <button type="submit" >Submit</button>
+       </form>
        location: {location ? `lat : ${location.lat} lng : ${location.lng}` : ''}
      </div>
    );
