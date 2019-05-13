@@ -2,7 +2,6 @@ import React from 'react'
 import { Map, TileLayer} from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 
-
 import Layout from '../components/layout'
 
 const GeocodeExperimentPage = () => (
@@ -65,17 +64,17 @@ geocodeAddress(address) {
   }
 
   render() {
-     const { location } = this.state;
-    return(
-     <div>
-       <p> Enter address </p>
-       <form onSubmit={this.handleSubmit}> 
-         <input type="text" name="address" onChange={this.handleChange} />
-         <button type="submit" >Submit</button>
-       </form>
-       location: {location ? `lat : ${location.lat} lng : ${location.lng}` : ''}
+    const { location } = this.state;
+    return (
+      <div>
+        <p>Enter address:</p>
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" name="address" onChange={this.handleChange} />
+          <button type="submit" >Submit</button>
+        </form>
+        <span>location: {location ? `lat : ${location.lat} lng : ${location.lng}` : ''}</span>
       </div>
-   );
+    );
   }
 }
 
@@ -87,15 +86,18 @@ class LeafletMap extends React.Component {
   }
 
   render() {
-    const position = [this.state.lat, this.state.lng]
-    return (
-      <Map style= {{height : '800px', width : '800px' }} center={position} zoom={this.state.zoom}>
-        <TileLayer
-          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-      </Map>
-    );
+    if (typeof window !== 'undefined') {
+      const position = [this.state.lat, this.state.lng]
+      return (
+        <Map style= {{height : '800px', width : '800px' }} center={position} zoom={this.state.zoom}>
+          <TileLayer
+            attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+        </Map>
+      );
+    }
+    else { return null }
   }
 }
 
