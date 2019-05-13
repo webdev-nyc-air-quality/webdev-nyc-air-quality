@@ -10,6 +10,8 @@
     "gatsby-plugin-manifest": "^2.0.29",
     "gatsby-plugin-offline": "^2.0.25",
     "gatsby-plugin-react-helmet": "^3.0.12",
+    "gatsby-source-filesystem": "^2.0.33",
+    "gatsby-transformer-json": "^2.1.11",
     "google-maps-react": "^2.0.2",
     "leaflet": "^1.5.1",
     "react": "^16.8.6",
@@ -34,7 +36,8 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.7.1",
     "prettier": "^1.13.7",
-    "react-test-renderer": "^16.8.6"
+    "react-test-renderer": "^16.8.6",
+    "react-testing-library": "^7.0.0"
   },
   "repository": {
     "type": "git",
