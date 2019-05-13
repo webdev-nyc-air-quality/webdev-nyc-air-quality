@@ -1,4 +1,7 @@
 import React from 'react'
+import { Map, TileLayer} from 'react-leaflet'
+import 'leaflet/dist/leaflet.css';
+
 
 import Layout from '../components/layout'
 
@@ -6,6 +9,7 @@ const GeocodeExperimentPage = () => (
   <Layout>
      Geocode Experiment
      <Geocode />
+     <LeafletMap  />
   </Layout>
 )
 
@@ -20,6 +24,12 @@ class Geocode extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+  state = {
+    lat: 51.505,
+    lng: -0.09,
+    zoom: 13,
+  }
+
 geocodeAddress(address) {
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.GATSBY_GMAPS_API_KEY}`)
       .then(res => res.json())
@@ -61,8 +71,28 @@ geocodeAddress(address) {
          <button type="submit" >Submit</button>
        </form>
        location: {location ? `lat : ${location.lat} lng : ${location.lng}` : ''}
-     </div>
+      </div>
    );
+  }
+}
+
+class LeafletMap extends React.Component {
+  state = {
+    lat: 51.505,
+    lng: -0.09,
+    zoom: 13,
+  }
+
+  render() {
+    const position = [this.state.lat, this.state.lng]
+    return (
+      <Map style= {{height : '800px', width : '800px' }} center={position} zoom={this.state.zoom}>
+        <TileLayer
+          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+      </Map>
+    );
   }
 }
 
