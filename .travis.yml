@@ -5,3 +5,4 @@ script:
   - yarn test:unit
   - yarn test:int
   - yarn test:e2e
+cache: yarn
