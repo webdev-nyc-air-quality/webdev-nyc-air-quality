@@ -28,7 +28,8 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write '**/*.js'",
-    "test:int": "jest -c tests/jest.int.config.js int"
+    "test:int": "jest -c tests/jest.int.config.js int",
+    "test:e2e": "jest -c tests/jest.e2e.config.js e2e"
   },
   "devDependencies": {
     "babel-jest": "^24.7.1",
