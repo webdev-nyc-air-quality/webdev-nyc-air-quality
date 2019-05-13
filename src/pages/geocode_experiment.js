@@ -21,8 +21,10 @@ class Geocode extends React.Component {
       error: null,
       isLoaded: false,
       location: [],
+      address: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
   state = {
     lat: 51.505,
@@ -37,7 +39,8 @@ geocodeAddress(address) {
         (result) => {
           this.setState({
             isLoaded: true,
-            location: result.results[0].geometry.location
+            location: result.results[0].geometry.location,
+            address
           });
         },
         // Note: it's important to handle errors here
@@ -53,12 +56,12 @@ geocodeAddress(address) {
   }
 
   handleChange(event) {
-    this.setState({address: event.target.address});
+    this.setState({address: event.target.value});
   }
 
   handleSubmit(event){
     event.preventDefault();
-    this.geocodeAddress(document.querySelector('#address').value);
+    this.geocodeAddress(this.state.address);
   }
 
   render() {
@@ -67,7 +70,7 @@ geocodeAddress(address) {
      <div>
        <p> Enter address </p>
        <form onSubmit={this.handleSubmit}> 
-         <input type="text" id="address" />
+         <input type="text" name="address" onChange={this.handleChange} />
          <button type="submit" >Submit</button>
        </form>
        location: {location ? `lat : ${location.lat} lng : ${location.lng}` : ''}
