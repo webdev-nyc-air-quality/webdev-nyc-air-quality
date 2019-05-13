@@ -11,10 +11,12 @@
     "gatsby-plugin-offline": "^2.0.25",
     "gatsby-plugin-react-helmet": "^3.0.12",
     "google-maps-react": "^2.0.2",
+    "leaflet": "^1.5.1",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.8",
     "react-dom": "^16.8.6",
-    "react-helmet": "^5.2.0"
+    "react-helmet": "^5.2.0",
+    "react-leaflet": "^2.3.0"
   },
   "keywords": [
     "gatsby"
