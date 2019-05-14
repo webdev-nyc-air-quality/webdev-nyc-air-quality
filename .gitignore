@@ -7,6 +7,10 @@ yarn-error.log
 /public
 .DS_Store
 
+# Tests
+coverage
+tests/coverage
+
 # aws
 src/aws-exports.js
 
