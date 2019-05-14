@@ -10,7 +10,7 @@ export class MapContainer extends Component {
           query {
             allCulturalInstitutionsJson {
               nodes {
-                name
+                Organization_Name
                 position {
                   lat
                   lng
@@ -31,7 +31,7 @@ export class MapContainer extends Component {
             {data.allCulturalInstitutionsJson.nodes.map((node, index ) => (
               <Marker 
                 key={index}
-                name={node.name}
+                name={node.Organization_Name}
                 position={node.position}
               />
             ))}
