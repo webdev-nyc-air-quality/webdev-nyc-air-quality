@@ -1,29 +1,28 @@
 import React from 'react'
-import { Map, TileLayer} from 'react-leaflet'
-import 'leaflet/dist/leaflet.css';
+import { Map, TileLayer } from 'react-leaflet'
+import 'leaflet/dist/leaflet.css'
 
 import Layout from '../components/layout'
 
 const GeocodeExperimentPage = () => (
   <Layout>
-     Geocode Experiment
-     <Geocode />
-     <LeafletMap  />
+    Geocode Experiment
+    <Geocode />
+    <LeafletMap />
   </Layout>
 )
 
-
 class Geocode extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       error: null,
       isLoaded: false,
       location: [],
       address: '',
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    }
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
   state = {
     lat: 51.505,
@@ -31,50 +30,57 @@ class Geocode extends React.Component {
     zoom: 13,
   }
 
-geocodeAddress(address) {
-    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.GATSBY_GMAPS_API_KEY}`)
+  geocodeAddress (address) {
+    fetch(
+      `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${
+        process.env.GATSBY_GMAPS_API_KEY
+      }`
+    )
       .then(res => res.json())
       .then(
-        (result) => {
+        result => {
           this.setState({
             isLoaded: true,
             location: result.results[0].geometry.location,
-            address
-          });
+            address,
+          })
         },
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
         // exceptions from actual bugs in components.
-        (error) => {
+        error => {
           this.setState({
             isLoaded: true,
-            error
-          });
+            error,
+          })
         }
       )
   }
 
-  handleChange(event) {
-    this.setState({address: event.target.value});
+  handleChange (event) {
+    this.setState({ address: event.target.value })
   }
 
-  handleSubmit(event){
-    event.preventDefault();
-    this.geocodeAddress(this.state.address);
+  handleSubmit (event) {
+    event.preventDefault()
+    this.geocodeAddress(this.state.address)
   }
 
-  render() {
-    const { location } = this.state;
+  render () {
+    const { location } = this.state
     return (
       <div>
         <p>Enter address:</p>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" name="address" onChange={this.handleChange} />
-          <button type="submit" >Submit</button>
+          <input type='text' name='address' onChange={this.handleChange} />
+          <button type='submit'>Submit</button>
         </form>
-        <span>location: {location ? `lat : ${location.lat} lng : ${location.lng}` : ''}</span>
+        <span>
+          location:{' '}
+          {location ? `lat : ${location.lat} lng : ${location.lng}` : ''}
+        </span>
       </div>
-    );
+    )
   }
 }
 
@@ -85,19 +91,24 @@ class LeafletMap extends React.Component {
     zoom: 13,
   }
 
-  render() {
+  render () {
     if (typeof window !== 'undefined') {
       const position = [this.state.lat, this.state.lng]
       return (
-        <Map style= {{height : '800px', width : '800px' }} center={position} zoom={this.state.zoom}>
+        <Map
+          style={{ height: '800px', width: '800px' }}
+          center={position}
+          zoom={this.state.zoom}
+        >
           <TileLayer
             attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
           />
         </Map>
-      );
+      )
+    } else {
+      return null
     }
-    else { return null }
   }
 }
 

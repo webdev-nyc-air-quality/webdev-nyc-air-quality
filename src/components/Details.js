@@ -11,7 +11,7 @@ const Home = () => {
       <p>Email: {user.email}</p>
       <p>Phone: {user.phone_number}</p>
       <p>Username: {user.username}</p>
-      <Link to="/app/home">Home</Link>
+      <Link to='/app/home'>Home</Link>
     </div>
   )
 }
