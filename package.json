@@ -28,14 +28,18 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write '**/*.js'",
-    "test": "jest"
+    "test:unit": "jest -c tests/jest.unit.config.js unit",
+    "test:int": "jest -c tests/jest.int.config.js int",
+    "test:e2e": "jest -c tests/jest.e2e.config.js e2e"
   },
   "devDependencies": {
     "babel-jest": "^24.8.0",
     "babel-preset-gatsby": "^0.1.11",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.8.0",
+    "jest-puppeteer": "^4.1.1",
     "prettier": "^1.17.1",
+    "puppeteer": "^1.16.0",
     "react-test-renderer": "^16.8.6",
     "react-testing-library": "^7.0.0"
   },
