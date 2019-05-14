@@ -4,11 +4,11 @@
   "version": "1.0.0",
   "author": "Nader Dabit <dabit3.@gmail.com>",
   "dependencies": {
-    "aws-amplify": "^1.1.26",
-    "aws-amplify-react": "^2.3.6",
-    "gatsby": "^2.3.23",
-    "gatsby-plugin-manifest": "^2.0.29",
-    "gatsby-plugin-offline": "^2.0.25",
+    "aws-amplify": "^1.1.27",
+    "aws-amplify-react": "^2.3.7",
+    "gatsby": "^2.4.3",
+    "gatsby-plugin-manifest": "^2.1.1",
+    "gatsby-plugin-offline": "^2.1.0",
     "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-source-filesystem": "^2.0.33",
     "gatsby-transformer-json": "^2.1.11",
@@ -17,7 +17,7 @@
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.8",
     "react-dom": "^16.8.6",
-    "react-helmet": "^5.2.0",
+    "react-helmet": "^5.2.1",
     "react-leaflet": "^2.3.0"
   },
   "keywords": [
@@ -33,13 +33,13 @@
     "test:e2e": "jest -c tests/jest.e2e.config.js e2e"
   },
   "devDependencies": {
-    "babel-jest": "^24.7.1",
+    "babel-jest": "^24.8.0",
     "babel-preset-gatsby": "^0.1.11",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^24.7.1",
+    "jest": "^24.8.0",
     "jest-puppeteer": "^4.1.1",
-    "prettier": "^1.13.7",
-    "puppeteer": "^1.15.0",
+    "prettier": "^1.17.1",
+    "puppeteer": "^1.16.0",
     "react-test-renderer": "^16.8.6",
     "react-testing-library": "^7.0.0"
   },
