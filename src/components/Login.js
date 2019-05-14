@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 import { Link } from 'gatsby'
 import { navigate } from '@reach/router'
 import { setUser, isLoggedIn } from '../utils/auth'
@@ -9,40 +9,40 @@ class Login extends React.Component {
   state = {
     username: ``,
     password: ``,
-    error: ``
+    error: ``,
   }
 
-  handleUpdate = (event) => {
+  handleUpdate = event => {
     this.setState({
       [event.target.name]: event.target.value,
     })
   }
 
-  login = async() => {
+  login = async () => {
     const { username, password } = this.state
     try {
       await Auth.signIn(username, password)
       const user = await Auth.currentAuthenticatedUser()
       const userInfo = {
         ...user.attributes,
-        username: user.username
+        username: user.username,
       }
       setUser(userInfo)
-      navigate("/app/home")
+      navigate('/app/home')
     } catch (err) {
       this.setState({ error: err })
       console.log('error...: ', err)
     }
   }
 
-  render() {
+  render () {
     if (isLoggedIn()) navigate('/app/profile')
     return (
       <div>
         <h1>Sign In</h1>
-        {this.state.error && <Error errorMessage={this.state.error}/>}
+        {this.state.error && <Error errorMessage={this.state.error} />}
         <div style={styles.formContainer}>
-         <input
+          <input
             onChange={this.handleUpdate}
             placeholder='Username'
             name='username'
@@ -61,7 +61,8 @@ class Login extends React.Component {
             <span style={styles.buttonText}>Sign In</span>
           </div>
         </div>
-        <Link to="/app/signup">Sign Up</Link><br />
+        <Link to='/app/signup'>Sign Up</Link>
+        <br />
       </div>
     )
   }
@@ -69,17 +70,24 @@ class Login extends React.Component {
 
 const styles = {
   input: {
-    height: 40, margin: '10px 0px', padding: 7
+    height: 40,
+    margin: '10px 0px',
+    padding: 7,
   },
   formContainer: {
-    display: 'flex', flexDirection: 'column'
+    display: 'flex',
+    flexDirection: 'column',
   },
   button: {
-    backgroundColor: 'SteelBlue', padding: '15px 7px', cursor: 'pointer', textAlign: 'center', marginBottom: 10
+    backgroundColor: 'SteelBlue',
+    padding: '15px 7px',
+    cursor: 'pointer',
+    textAlign: 'center',
+    marginBottom: 10,
   },
   buttonText: {
-    color: 'white'
-  }
+    color: 'white',
+  },
 }
 
 export default Login

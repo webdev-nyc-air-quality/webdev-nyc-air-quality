@@ -27,7 +27,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write '**/*.js'",
+    "format": "prettier-standard 'src/**/*.js'",
     "test:unit": "jest -c tests/jest.unit.config.js unit",
     "test:int": "jest -c tests/jest.int.config.js int",
     "test:e2e": "jest -c tests/jest.e2e.config.js e2e"
