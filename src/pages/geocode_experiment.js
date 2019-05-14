@@ -2,7 +2,6 @@ import React from 'react'
 import { Map, TileLayer} from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 
-
 import Layout from '../components/layout'
 
 const GeocodeExperimentPage = () => (
@@ -21,8 +20,10 @@ class Geocode extends React.Component {
       error: null,
       isLoaded: false,
       location: [],
+      address: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
   state = {
     lat: 51.505,
@@ -37,7 +38,8 @@ geocodeAddress(address) {
         (result) => {
           this.setState({
             isLoaded: true,
-            location: result.results[0].geometry.location
+            location: result.results[0].geometry.location,
+            address
           });
         },
         // Note: it's important to handle errors here
@@ -53,26 +55,26 @@ geocodeAddress(address) {
   }
 
   handleChange(event) {
-    this.setState({address: event.target.address});
+    this.setState({address: event.target.value});
   }
 
   handleSubmit(event){
     event.preventDefault();
-    this.geocodeAddress(document.querySelector('#address').value);
+    this.geocodeAddress(this.state.address);
   }
 
   render() {
-     const { location } = this.state;
-    return(
-     <div>
-       <p> Enter address </p>
-       <form onSubmit={this.handleSubmit}> 
-         <input type="text" id="address" />
-         <button type="submit" >Submit</button>
-       </form>
-       location: {location ? `lat : ${location.lat} lng : ${location.lng}` : ''}
+    const { location } = this.state;
+    return (
+      <div>
+        <p>Enter address:</p>
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" name="address" onChange={this.handleChange} />
+          <button type="submit" >Submit</button>
+        </form>
+        <span>location: {location ? `lat : ${location.lat} lng : ${location.lng}` : ''}</span>
       </div>
-   );
+    );
   }
 }
 
@@ -84,15 +86,18 @@ class LeafletMap extends React.Component {
   }
 
   render() {
-    const position = [this.state.lat, this.state.lng]
-    return (
-      <Map style= {{height : '800px', width : '800px' }} center={position} zoom={this.state.zoom}>
-        <TileLayer
-          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-      </Map>
-    );
+    if (typeof window !== 'undefined') {
+      const position = [this.state.lat, this.state.lng]
+      return (
+        <Map style= {{height : '800px', width : '800px' }} center={position} zoom={this.state.zoom}>
+          <TileLayer
+            attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+        </Map>
+      );
+    }
+    else { return null }
   }
 }
 
