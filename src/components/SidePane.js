@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Tabs, Tab } from 'react-bootstrap'
 
+import DatasetList from './DatasetList'
 import styles from './SidePane.css'
 
 class SidePane extends Component {
@@ -35,17 +36,7 @@ class SidePane extends Component {
           arcu vel gravida ultricies.
         </Tab>
         <Tab eventKey='list' title='List'>
-          Nulla urna sapien, hendrerit sit amet risus in, facilisis pharetra
-          erat. Suspendisse imperdiet dui vel pharetra facilisis. Mauris
-          malesuada, quam sed vehicula accumsan, arcu justo congue dolor, non
-          tempus eros augue eu arcu. Sed quis massa at metus consequat feugiat
-          eu vel lorem. Proin imperdiet libero sed ipsum finibus, in congue
-          neque fringilla. Class aptent taciti sociosqu ad litora torquent per
-          conubia nostra, per inceptos himenaeos. Nam eu erat sed mi tincidunt
-          rhoncus. Vivamus facilisis, erat eget iaculis congue, est odio viverra
-          sapien, vel feugiat est risus ac mauris. Nunc eu mauris imperdiet nibh
-          malesuada sagittis. Duis luctus vehicula nisi. Sed a est efficitur,
-          imperdiet mauris et, tempor lacus.
+          <DatasetList />
         </Tab>
         <Tab eventKey='discuss' title='Discuss'>
           Vestibulum semper nec sem eget scelerisque. Morbi sem lorem, dictum
