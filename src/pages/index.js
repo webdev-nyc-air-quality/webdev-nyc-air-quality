@@ -11,6 +11,7 @@ Amplify.configure(config)
 
 class IndexPage extends Component {
   state = {
+    activeDatasetIndex: '0',
     datasets: [
       {
         name: 'Dataset-1',
@@ -31,6 +32,21 @@ class IndexPage extends Component {
     ],
   }
 
+  constructor (props) {
+    super(props)
+    this.setActiveDataset = this.setActiveDataset.bind(this)
+  }
+
+  setActiveDataset (e) {
+    const index = this.state.datasets.findIndex(
+      ({ name }) => name === e.target.textContent
+    )
+    this.setState({
+      ...this.state,
+      activeDatasetIndex: index,
+    })
+  }
+
   render () {
     return (
       <Layout>
@@ -44,7 +60,11 @@ class IndexPage extends Component {
             <Map />
           </Col>
           <Col xs={4}>
-            <SidePane datasets={this.state.datasets} />
+            <SidePane
+              datasets={this.state.datasets}
+              activeDatasetIndex={this.state.activeDatasetIndex}
+              setActiveDataset={this.setActiveDataset}
+            />
           </Col>
         </Row>
       </Layout>

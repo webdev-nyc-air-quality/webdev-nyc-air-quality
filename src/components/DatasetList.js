@@ -1,8 +1,8 @@
 import React from 'react'
 import { Accordion, Button, Card } from 'react-bootstrap'
 
-const DatasetList = ({ datasets }) => (
-  <Accordion defaultActiveKey='0'>
+const DatasetList = ({ datasets, activeDatasetIndex, setActiveDataset }) => (
+  <Accordion activeKey={'' + activeDatasetIndex}>
     {datasets.map(({ name, description }, index) => (
       <Card key={index}>
         <Card.Header>
@@ -11,6 +11,7 @@ const DatasetList = ({ datasets }) => (
             variant='link'
             eventKey={'' + index}
             className='stretched-link'
+            onClick={setActiveDataset}
           >
             {name}
           </Accordion.Toggle>
