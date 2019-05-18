@@ -9,7 +9,9 @@ afterEach(cleanup)
 
 describe('Header component', () => {
   test('should contain the page title', () => {
-    const { container } = render(<Header />)
+    const { container } = render(
+      <Header siteTitle={'Neighborhood Data'} />
+    )
     const brand = container.querySelector('.navbar-brand')
     expect(brand).not.toBeNull()
     expect(brand.textContent).toBe('Neighborhood Data')
