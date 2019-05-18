@@ -5,15 +5,15 @@ import { Nav, Navbar, NavDropdown } from 'react-bootstrap'
 
 import { logout, isLoggedIn } from '../utils/auth'
 
-const Header = ({ siteTitle }) => (
+const Header = ({ siteTitle, subpageTitle }) => (
   <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
     <Navbar.Brand style={styles.brand} onClick={() => navigate('/')}>
-      Neighborhood Data
+      {siteTitle}
     </Navbar.Brand>
     <Nav className='mr-auto'>
-      <Nav.Item className='text-secondary'>
-        Dataset: cultural institutions
-      </Nav.Item>
+      {subpageTitle && (
+        <Nav.Item className='text-secondary'>Dataset: {subpageTitle}</Nav.Item>
+      )}
     </Nav>
     <Navbar.Toggle aria-controls='responsive-navbar-nav' />
     <Navbar.Collapse id='responsive-navbar-nav'>

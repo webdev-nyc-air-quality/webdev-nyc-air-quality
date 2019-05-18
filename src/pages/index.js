@@ -12,6 +12,7 @@ Amplify.configure(config)
 class IndexPage extends Component {
   state = {
     activeDatasetIndex: '0',
+    subpageTitle: 'Dataset-1',
     datasets: [
       {
         name: 'Dataset-1',
@@ -38,18 +39,20 @@ class IndexPage extends Component {
   }
 
   setActiveDataset (e) {
+    const datasetName = e.target.textContent
     const index = this.state.datasets.findIndex(
-      ({ name }) => name === e.target.textContent
+      ({ name }) => name === datasetName
     )
     this.setState({
       ...this.state,
       activeDatasetIndex: index,
+      subpageTitle: datasetName,
     })
   }
 
   render () {
     return (
-      <Layout>
+      <Layout title={this.state.subpageTitle}>
         <Row
           style={{
             height: '100%',
