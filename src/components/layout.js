@@ -44,7 +44,7 @@ const Layout = ({ children, data, title }) => (
 
 const styles = {
   main: {
-    height: 'calc(100vh - 75px)',
+    height: 'calc(100vh - 3.5rem)',
   },
   section: {
     height: '100%',
