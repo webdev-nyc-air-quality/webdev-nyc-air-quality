@@ -12,7 +12,7 @@ const Header = ({ siteTitle, subpageTitle }) => (
     </Navbar.Brand>
     <Nav className='mr-auto'>
       {subpageTitle && (
-        <Nav.Item className='text-secondary'>Dataset: {subpageTitle}</Nav.Item>
+        <Nav.Item className='text-secondary'>{subpageTitle}</Nav.Item>
       )}
     </Nav>
     <Navbar.Toggle aria-controls='responsive-navbar-nav' />

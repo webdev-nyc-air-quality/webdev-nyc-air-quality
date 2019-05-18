@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Neighborhood Data',
+    title: 'NYC Data Speaks',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
