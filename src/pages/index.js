@@ -11,6 +11,7 @@ Amplify.configure(config)
 
 class IndexPage extends Component {
   state = {
+    activeTab: 'list',
     activeDatasetIndex: '0',
     subpageTitle: 'Dataset-1',
     datasets: [
@@ -35,7 +36,12 @@ class IndexPage extends Component {
 
   constructor (props) {
     super(props)
+    this.setActiveTab = this.setActiveTab.bind(this)
     this.setActiveDataset = this.setActiveDataset.bind(this)
+  }
+
+  setActiveTab (tabName) {
+    this.setState({ ...this.state, activeTab: tabName })
   }
 
   setActiveDataset (e) {
@@ -64,6 +70,8 @@ class IndexPage extends Component {
           </Col>
           <Col xs={4}>
             <SidePane
+              activeTab={this.state.activeTab}
+              setActiveTab={this.setActiveTab}
               datasets={this.state.datasets}
               activeDatasetIndex={this.state.activeDatasetIndex}
               setActiveDataset={this.setActiveDataset}
