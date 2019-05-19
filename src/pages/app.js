@@ -1,4 +1,5 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 import { Router } from '@reach/router'
 
 import Layout from '../components/layout'
@@ -8,8 +9,8 @@ import Login from '../components/Login'
 import SignUp from '../components/SignUp'
 import PrivateRoute from '../components/PrivateRoute'
 
-const App = () => (
-  <Layout>
+const App = props => (
+  <Layout siteTitle={props.data.site.siteMetadata.title}>
     <Router>
       <PrivateRoute path='/app/home' component={Home} />
       <PrivateRoute path='/app/profile' component={Details} />
@@ -18,5 +19,13 @@ const App = () => (
     </Router>
   </Layout>
 )
+
+export const query = graphql`
+  query AppQuery {
+    site {
+      ...SiteTitle
+    }
+  }
+`
 
 export default App
