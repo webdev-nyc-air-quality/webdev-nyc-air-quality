@@ -9,8 +9,8 @@ import Login from '../components/Login'
 import SignUp from '../components/SignUp'
 import PrivateRoute from '../components/PrivateRoute'
 
-const App = props => (
-  <Layout siteTitle={props.data.site.siteMetadata.title}>
+const App = ({ data }) => (
+  <Layout siteTitle={data.site.siteMetadata.title}>
     <Router>
       <PrivateRoute path='/app/home' component={Home} />
       <PrivateRoute path='/app/profile' component={Details} />
