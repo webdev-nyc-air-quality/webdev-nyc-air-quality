@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Amplify from 'aws-amplify'
 import { Row, Col } from 'react-bootstrap'
+import { graphql } from 'gatsby'
 
 import config from '../aws-exports'
 import Layout from '../components/layout'
@@ -58,7 +59,10 @@ class IndexPage extends Component {
 
   render () {
     return (
-      <Layout title={this.state.subpageTitle}>
+      <Layout
+        siteTitle={this.props.data.site.siteMetadata.title}
+        subpageTitle={this.state.subpageTitle}
+      >
         <Row
           style={{
             height: '100%',
@@ -82,5 +86,15 @@ class IndexPage extends Component {
     )
   }
 }
+
+export const query = graphql`
+  query SiteTitleQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`
 
 export default IndexPage
