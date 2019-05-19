@@ -2,7 +2,9 @@ import React from 'react'
 import { render, cleanup } from 'react-testing-library'
 
 import IndexPage from '../../src/pages/index'
+import '../../src/aws-exports'
 
+jest.mock('../../src/aws-exports')
 afterEach(cleanup)
 
 describe('IndexPage component', () => {
