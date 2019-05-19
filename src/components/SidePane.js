@@ -36,7 +36,11 @@ class SidePane extends Component {
           arcu vel gravida ultricies.
         </Tab>
         <Tab eventKey='list' title='List'>
-          <DatasetList />
+          <DatasetList
+            datasets={this.props.datasets}
+            activeDatasetIndex={this.props.activeDatasetIndex}
+            setActiveDataset={this.props.setActiveDataset}
+          />
         </Tab>
         <Tab eventKey='discuss' title='Discuss'>
           Vestibulum semper nec sem eget scelerisque. Morbi sem lorem, dictum

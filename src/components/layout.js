@@ -5,7 +5,7 @@ import { StaticQuery, graphql } from 'gatsby'
 
 import Header from './header'
 
-const Layout = ({ children, data }) => (
+const Layout = ({ children, data, title }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -19,7 +19,9 @@ const Layout = ({ children, data }) => (
     render={data => (
       <main style={styles.main}>
         <Helmet
-          title={data.site.siteMetadata.title}
+          titleTemplate={`%s - ${data.site.siteMetadata.title}`}
+          defaultTitle={data.site.siteMetadata.title}
+          title={title}
           meta={[
             { name: 'description', content: 'Sample' },
             { name: 'keywords', content: 'sample, something' },
@@ -33,7 +35,7 @@ const Layout = ({ children, data }) => (
             crossorigin='anonymous'
           />
         </Helmet>
-        <Header siteTitle={data.site.siteMetadata.title} />
+        <Header siteTitle={data.site.siteMetadata.title} subpageTitle={title} />
         <section style={styles.section}>{children}</section>
       </main>
     )}
@@ -42,7 +44,7 @@ const Layout = ({ children, data }) => (
 
 const styles = {
   main: {
-    height: 'calc(100vh - 75px)',
+    height: 'calc(100vh - 3.5rem)',
   },
   section: {
     height: '100%',
