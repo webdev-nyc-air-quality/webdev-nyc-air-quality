@@ -88,11 +88,9 @@ class IndexPage extends Component {
 }
 
 export const query = graphql`
-  query SiteTitleQuery {
+  query IndexQuery {
     site {
-      siteMetadata {
-        title
-      }
+      ...SiteTitle
     }
   }
 `
