@@ -1,8 +1,7 @@
 import React from 'react'
-import { Map, TileLayer } from 'react-leaflet'
-import 'leaflet/dist/leaflet.css'
 
 import Layout from '../components/layout'
+import LeafletMap from '../components/LeafletMap'
 
 const GeocodeExperimentPage = () => (
   <Layout>
@@ -81,34 +80,6 @@ class Geocode extends React.Component {
         </span>
       </div>
     )
-  }
-}
-
-class LeafletMap extends React.Component {
-  state = {
-    lat: 51.505,
-    lng: -0.09,
-    zoom: 13,
-  }
-
-  render () {
-    if (typeof window !== 'undefined') {
-      const position = [this.state.lat, this.state.lng]
-      return (
-        <Map
-          style={{ height: '800px', width: '800px' }}
-          center={position}
-          zoom={this.state.zoom}
-        >
-          <TileLayer
-            attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-          />
-        </Map>
-      )
-    } else {
-      return null
-    }
   }
 }
 
