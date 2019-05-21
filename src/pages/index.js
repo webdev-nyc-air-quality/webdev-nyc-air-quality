@@ -39,8 +39,8 @@ class IndexPage extends Component {
     mapOptions: {
       zoom: 12,
       center: {
-        lat: 40.7128,
-        lng: -73.9352,
+        lat: 40.8200471,
+        lng: -73.9492724,
       },
     },
   }
