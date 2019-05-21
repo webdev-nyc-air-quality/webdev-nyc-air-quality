@@ -5,7 +5,7 @@ import { graphql } from 'gatsby'
 
 import config from '../aws-exports'
 import Layout from '../components/layout'
-import Map from '../components/Map'
+import CulturalInstitutions from '../components/CulturalInstitutions'
 import SidePane from '../components/SidePane'
 
 Amplify.configure(config)
@@ -33,6 +33,11 @@ class IndexPage extends Component {
         description: 'A short description of dataset-4',
       },
     ],
+    zoom: 12,
+    center: {
+      lat: 40.7128,
+      lng: -73.9352,
+    },
   }
 
   constructor (props) {
@@ -70,7 +75,11 @@ class IndexPage extends Component {
           className='no-gutters'
         >
           <Col xs={8}>
-            <Map />
+            <CulturalInstitutions
+              zoom={this.state.zoom}
+              center={this.state.center}
+              data={this.props.data.allCulturalInstitutionsJson}
+            />
           </Col>
           <Col xs={4}>
             <SidePane
@@ -91,6 +100,18 @@ export const query = graphql`
   query IndexQuery {
     site {
       ...SiteTitle
+    }
+    allCulturalInstitutionsJson {
+      nodes {
+        Organization_Name
+        Preferred_Address_Line_1
+        Borough
+        Community_Board
+        position {
+          lat
+          lng
+        }
+      }
     }
   }
 `
