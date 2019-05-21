@@ -5,7 +5,6 @@ let Map = false
 let TileLayer = false
 let L = false
 if (typeof window !== 'undefined') {
-  console.log(`env: ${process.env.GATSBY_CLIENT}`)
   RL = require('react-leaflet')
   L = require('leaflet')
   require('leaflet/dist/leaflet.css')
@@ -19,13 +18,13 @@ if (typeof window !== 'undefined') {
   })
 }
 
-const LeafletMap = ({ data, center, zoom, children }) => (
+const LeafletMap = ({ mapOptions, children }) => (
   <>
     {typeof window !== 'undefined' && (
       <Map
-        style={{ height: '800px', width: '800px' }}
-        center={center}
-        zoom={zoom}
+        style={{ height: '100%', width: '100%' }}
+        center={mapOptions.center}
+        zoom={mapOptions.zoom}
       >
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

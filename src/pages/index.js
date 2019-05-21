@@ -5,7 +5,7 @@ import { graphql } from 'gatsby'
 
 import config from '../aws-exports'
 import Layout from '../components/layout'
-import Map from '../components/Map'
+import Plots from '../components/Plots'
 import SidePane from '../components/SidePane'
 
 Amplify.configure(config)
@@ -13,26 +13,36 @@ Amplify.configure(config)
 class IndexPage extends Component {
   state = {
     activeTab: 'list',
-    activeDatasetIndex: '0',
     subpageTitle: 'Dataset-1',
     datasets: [
       {
         name: 'Dataset-1',
         description: 'A short description of dataset-1',
+        active: true,
       },
       {
         name: 'Dataset-2',
         description: 'A short description of dataset-2',
+        active: false,
       },
       {
         name: 'Dataset-3',
         description: 'A short description of dataset-3',
+        active: false,
       },
       {
         name: 'Dataset-4',
         description: 'A short description of dataset-4',
+        active: false,
       },
     ],
+    mapOptions: {
+      zoom: 12,
+      center: {
+        lat: 40.8200471,
+        lng: -73.9492724,
+      },
+    },
   }
 
   constructor (props) {
@@ -50,10 +60,14 @@ class IndexPage extends Component {
     const index = this.state.datasets.findIndex(
       ({ name }) => name === datasetName
     )
+    const datasets = [...this.state.datasets]
+    datasets.forEach(dataset => (dataset.active = false))
+    datasets[index].active = true
+
     this.setState({
       ...this.state,
-      activeDatasetIndex: index,
       subpageTitle: datasetName,
+      datasets,
     })
   }
 
@@ -70,14 +84,20 @@ class IndexPage extends Component {
           className='no-gutters'
         >
           <Col xs={8}>
-            <Map />
+            <Plots
+              data={this.props.data}
+              datasets={this.state.datasets}
+              mapOptions={this.state.mapOptions}
+            />
           </Col>
           <Col xs={4}>
             <SidePane
               activeTab={this.state.activeTab}
               setActiveTab={this.setActiveTab}
               datasets={this.state.datasets}
-              activeDatasetIndex={this.state.activeDatasetIndex}
+              activeDatasetIndex={this.state.datasets.findIndex(
+                dataset => dataset.active
+              )}
               setActiveDataset={this.setActiveDataset}
             />
           </Col>
@@ -91,6 +111,18 @@ export const query = graphql`
   query IndexQuery {
     site {
       ...SiteTitle
+    }
+    allCulturalInstitutionsJson {
+      nodes {
+        Organization_Name
+        Preferred_Address_Line_1
+        Borough
+        Community_Board
+        position {
+          lat
+          lng
+        }
+      }
     }
   }
 `

@@ -11,10 +11,12 @@ class GeocodeExperimentPage extends Component {
     this.state = {
       outputLocation: false,
       address: '',
-      zoom: 12,
-      center: {
-        lat: 40.7128,
-        lng: -73.9352,
+      mapOptions: {
+        zoom: 12,
+        center: {
+          lat: 40.7128,
+          lng: -73.9352,
+        },
       },
     }
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -66,7 +68,7 @@ class GeocodeExperimentPage extends Component {
           handleSubmit={this.handleSubmit}
           outputLocation={this.state.outputLocation}
         />
-        <LeafletMap center={this.state.center} zoom={this.state.zoom} />
+        <LeafletMap mapOptions={this.state.mapOptions} />
       </Layout>
     )
   }
