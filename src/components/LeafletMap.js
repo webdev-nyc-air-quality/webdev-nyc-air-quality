@@ -4,7 +4,7 @@ let RL = false
 let Map = false
 let TileLayer = false
 let L = false
-if (process.env.GATSBY_CLIENT) {
+if (typeof window !== 'undefined') {
   console.log(`env: ${process.env.GATSBY_CLIENT}`)
   RL = require('react-leaflet')
   L = require('leaflet')
@@ -21,7 +21,7 @@ if (process.env.GATSBY_CLIENT) {
 
 const LeafletMap = ({ data, center, zoom, children }) => (
   <>
-    {process.env.GATSBY_CLIENT && (
+    {typeof window !== 'undefined' && (
       <Map
         style={{ height: '800px', width: '800px' }}
         center={center}
