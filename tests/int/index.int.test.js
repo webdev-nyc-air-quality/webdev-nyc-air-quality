@@ -13,6 +13,30 @@ describe('IndexPage component', () => {
         siteMetadata: {
           title: "NYC Data Speaks"
         }
+      },
+      allCulturalInstitutionsJson: {
+        nodes: [
+          {
+            "Organization_Name": "Synagogue for the Arts",
+            "Preferred_Address_Line_1": "49 White Street",
+            "Borough": "Manhattan",
+            "Community_Board": 1,
+            "position": {
+              "lat": 40.718526,
+              "lng": -74.004156
+            }
+          },
+          {
+            "Organization_Name": "Action Center To End World Hunger",
+            "Preferred_Address_Line_1": "6 River Terrace",
+            "Borough": "Manhattan",
+            "Community_Board": 1,
+            "position": {
+              "lat": 40.715781,
+              "lng": -74.016518
+            }
+          }
+        ]
       }
     }
   }
