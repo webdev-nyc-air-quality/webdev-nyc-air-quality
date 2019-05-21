@@ -5,7 +5,7 @@ import { graphql } from 'gatsby'
 
 import config from '../aws-exports'
 import Layout from '../components/layout'
-import CulturalInstitutions from '../components/CulturalInstitutions'
+import Plots from '../components/Plots'
 import SidePane from '../components/SidePane'
 
 Amplify.configure(config)
@@ -13,30 +13,35 @@ Amplify.configure(config)
 class IndexPage extends Component {
   state = {
     activeTab: 'list',
-    activeDatasetIndex: '0',
     subpageTitle: 'Dataset-1',
     datasets: [
       {
         name: 'Dataset-1',
         description: 'A short description of dataset-1',
+        active: true,
       },
       {
         name: 'Dataset-2',
         description: 'A short description of dataset-2',
+        active: false,
       },
       {
         name: 'Dataset-3',
         description: 'A short description of dataset-3',
+        active: false,
       },
       {
         name: 'Dataset-4',
         description: 'A short description of dataset-4',
+        active: false,
       },
     ],
-    zoom: 12,
-    center: {
-      lat: 40.7128,
-      lng: -73.9352,
+    mapOptions: {
+      zoom: 12,
+      center: {
+        lat: 40.7128,
+        lng: -73.9352,
+      },
     },
   }
 
@@ -55,10 +60,14 @@ class IndexPage extends Component {
     const index = this.state.datasets.findIndex(
       ({ name }) => name === datasetName
     )
+    const datasets = [...this.state.datasets]
+    datasets.forEach(dataset => (dataset.active = false))
+    datasets[index].active = true
+
     this.setState({
       ...this.state,
-      activeDatasetIndex: index,
       subpageTitle: datasetName,
+      datasets,
     })
   }
 
@@ -75,10 +84,10 @@ class IndexPage extends Component {
           className='no-gutters'
         >
           <Col xs={8}>
-            <CulturalInstitutions
-              zoom={this.state.zoom}
-              center={this.state.center}
-              data={this.props.data.allCulturalInstitutionsJson}
+            <Plots
+              data={this.props.data}
+              datasets={this.state.datasets}
+              mapOptions={this.state.mapOptions}
             />
           </Col>
           <Col xs={4}>
@@ -86,7 +95,9 @@ class IndexPage extends Component {
               activeTab={this.state.activeTab}
               setActiveTab={this.setActiveTab}
               datasets={this.state.datasets}
-              activeDatasetIndex={this.state.activeDatasetIndex}
+              activeDatasetIndex={this.state.datasets.findIndex(
+                dataset => dataset.active
+              )}
               setActiveDataset={this.setActiveDataset}
             />
           </Col>

@@ -11,9 +11,9 @@ if (typeof window !== 'undefined') {
   Popup = RL.Popup
 }
 
-const CulturalInstitutions = ({ center, zoom, data }) => (
-  <LeafletMap center={center} zoom={zoom}>
-    {data.nodes.map((node, index) => (
+const CulturalInstitutions = ({ data, mapOptions }) => (
+  <LeafletMap mapOptions={mapOptions}>
+    {data.allCulturalInstitutionsJson.nodes.map((node, index) => (
       <Marker key={index} position={node.position}>
         <Popup>
           <strong>{node.Organization_Name}</strong>
