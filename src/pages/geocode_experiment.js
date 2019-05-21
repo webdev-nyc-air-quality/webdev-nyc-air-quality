@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
 import LeafletMap from '../components/LeafletMap'
@@ -51,7 +52,10 @@ class GeocodeExperimentPage extends Component {
 
   render () {
     return (
-      <Layout subpageTitle='Geocode Experiment'>
+      <Layout
+        siteTitle={this.props.data.site.siteMetadata.title}
+        subpageTitle='Geocode Experiment'
+      >
         <GeocodeForm
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
@@ -62,5 +66,13 @@ class GeocodeExperimentPage extends Component {
     )
   }
 }
+
+export const query = graphql`
+  query GeocodeExperimentQuery {
+    site {
+      ...SiteTitle
+    }
+  }
+`
 
 export default GeocodeExperimentPage
