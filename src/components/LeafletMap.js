@@ -5,7 +5,6 @@ let Map = false
 let TileLayer = false
 let L = false
 if (typeof window !== 'undefined') {
-  console.log(`env: ${process.env.GATSBY_CLIENT}`)
   RL = require('react-leaflet')
   L = require('leaflet')
   require('leaflet/dist/leaflet.css')
@@ -23,7 +22,7 @@ const LeafletMap = ({ data, center, zoom, children }) => (
   <>
     {typeof window !== 'undefined' && (
       <Map
-        style={{ height: '800px', width: '800px' }}
+        style={{ height: '100%', width: '100%' }}
         center={center}
         zoom={zoom}
       >
