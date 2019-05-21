@@ -19,13 +19,13 @@ if (process.env.GATSBY_CLIENT) {
   })
 }
 
-const LeafletMap = ({ data, children }) => (
+const LeafletMap = ({ data, center, zoom, children }) => (
   <>
     {process.env.GATSBY_CLIENT && (
       <Map
         style={{ height: '800px', width: '800px' }}
-        center={[51.505, -0.09]}
-        zoom={13}
+        center={center}
+        zoom={zoom}
       >
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
