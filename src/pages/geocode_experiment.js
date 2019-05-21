@@ -1,60 +1,24 @@
-import React from 'react'
-import { Map, TileLayer } from 'react-leaflet'
-import 'leaflet/dist/leaflet.css'
+import React, { Component } from 'react'
+import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
+import LeafletMap from '../components/LeafletMap'
+import GeocodeForm from '../components/GeocodeForm'
 
-const GeocodeExperimentPage = () => (
-  <Layout>
-    Geocode Experiment
-    <Geocode />
-    <LeafletMap />
-  </Layout>
-)
-
-class Geocode extends React.Component {
+class GeocodeExperimentPage extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      error: null,
-      isLoaded: false,
-      location: [],
+      outputLocation: false,
       address: '',
+      zoom: 12,
+      center: {
+        lat: 40.7128,
+        lng: -73.9352,
+      },
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
-  }
-  state = {
-    lat: 51.505,
-    lng: -0.09,
-    zoom: 13,
-  }
-
-  geocodeAddress (address) {
-    fetch(
-      `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${
-        process.env.GATSBY_GMAPS_API_KEY
-      }`
-    )
-      .then(res => res.json())
-      .then(
-        result => {
-          this.setState({
-            isLoaded: true,
-            location: result.results[0].geometry.location,
-            address,
-          })
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        error => {
-          this.setState({
-            isLoaded: true,
-            error,
-          })
-        }
-      )
   }
 
   handleChange (event) {
@@ -66,50 +30,54 @@ class Geocode extends React.Component {
     this.geocodeAddress(this.state.address)
   }
 
+  geocodeAddress (address) {
+    if (!address) return false
+    fetch(
+      `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${
+        process.env.GATSBY_GMAPS_API_KEY
+      }`
+    )
+      .then(res => res.json())
+      .then(
+        result => {
+          const outputLocation = result.results.length
+            ? result.results[0].geometry.location
+            : false
+          this.setState({
+            outputLocation,
+          })
+        },
+        error => {
+          this.setState({
+            outputLocation: false,
+          })
+        }
+      )
+  }
+
   render () {
-    const { location } = this.state
     return (
-      <div>
-        <p>Enter address:</p>
-        <form onSubmit={this.handleSubmit}>
-          <input type='text' name='address' onChange={this.handleChange} />
-          <button type='submit'>Submit</button>
-        </form>
-        <span>
-          location:{' '}
-          {location ? `lat : ${location.lat} lng : ${location.lng}` : ''}
-        </span>
-      </div>
+      <Layout
+        siteTitle={this.props.data.site.siteMetadata.title}
+        subpageTitle='Geocode Experiment'
+      >
+        <GeocodeForm
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+          outputLocation={this.state.outputLocation}
+        />
+        <LeafletMap center={this.state.center} zoom={this.state.zoom} />
+      </Layout>
     )
   }
 }
 
-class LeafletMap extends React.Component {
-  state = {
-    lat: 51.505,
-    lng: -0.09,
-    zoom: 13,
-  }
-
-  render () {
-    if (typeof window !== 'undefined') {
-      const position = [this.state.lat, this.state.lng]
-      return (
-        <Map
-          style={{ height: '800px', width: '800px' }}
-          center={position}
-          zoom={this.state.zoom}
-        >
-          <TileLayer
-            attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-          />
-        </Map>
-      )
-    } else {
-      return null
+export const query = graphql`
+  query GeocodeExperimentQuery {
+    site {
+      ...SiteTitle
     }
   }
-}
+`
 
 export default GeocodeExperimentPage

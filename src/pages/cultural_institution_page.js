@@ -1,64 +1,37 @@
-import React from 'react'
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
-import 'leaflet/dist/leaflet.css'
-import L from 'leaflet'
+import React, { Component } from 'react'
+import { graphql } from 'gatsby'
+
 import Layout from '../components/layout'
-import { StaticQuery, graphql } from 'gatsby'
+import LeafletMap from '../components/LeafletMap'
 
-const CulturalInstitutionsPage = () => (
-  <Layout>
-    Cultural Institutions Data
-    <CulturalInstitution />
-  </Layout>
-)
+let RL = false
+let Marker = false
+let Popup = false
+if (process.env.GATSBY_CLIENT) {
+  console.log(`env: ${process.env.GATSBY_CLIENT}`)
+  RL = require('react-leaflet')
+  Marker = RL.Marker
+  Popup = RL.Popup
+}
 
-delete L.Icon.Default.prototype._getIconUrl
-
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
-})
-
-class CulturalInstitution extends React.Component {
+class CulturalInstitutionsPage extends Component {
   state = {
-    lat: 40.7128,
-    lng: -73.9352,
     zoom: 12,
+    center: {
+      lat: 40.7128,
+      lng: -73.9352,
+    },
   }
-
-  // const position = [this.state.lat, this.state.lng]
 
   render () {
     return (
-      <StaticQuery
-        query={graphql`
-          query {
-            allCulturalInstitutionsJson {
-              nodes {
-                Organization_Name
-                Preferred_Address_Line_1
-                Borough
-                Community_Board
-                position {
-                  lat
-                  lng
-                }
-              }
-            }
-          }
-        `}
-        render={data => (
-          <Map
-            style={{ height: '100%', width: '66%' }}
-            center={{ lat: 40.7128, lng: -73.9352 }}
-            zoom={this.state.zoom}
-          >
-            <TileLayer
-              attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-            />
-            {data.allCulturalInstitutionsJson.nodes.map((node, index) => (
+      <Layout
+        siteTitle={this.props.data.site.siteMetadata.title}
+        subpageTitle='Cultural Institutions'
+      >
+        <LeafletMap center={this.state.center} zoom={this.state.zoom}>
+          {this.props.data.allCulturalInstitutionsJson.nodes.map(
+            (node, index) => (
               <Marker key={index} position={node.position}>
                 <Popup>
                   <strong>{node.Organization_Name}</strong>
@@ -66,12 +39,32 @@ class CulturalInstitution extends React.Component {
                   {node.Preferred_Address_Line_1}
                 </Popup>
               </Marker>
-            ))}
-          </Map>
-        )}
-      />
+            )
+          )}
+        </LeafletMap>
+      </Layout>
     )
   }
 }
+
+export const query = graphql`
+  query CulturalInstitutionsQuery {
+    site {
+      ...SiteTitle
+    }
+    allCulturalInstitutionsJson {
+      nodes {
+        Organization_Name
+        Preferred_Address_Line_1
+        Borough
+        Community_Board
+        position {
+          lat
+          lng
+        }
+      }
+    }
+  }
+`
 
 export default CulturalInstitutionsPage
