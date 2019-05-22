@@ -9,7 +9,6 @@ class GeocodeExperimentPage extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      outputLocation: false,
       address: '',
       mapOptions: {
         zoom: 12,
@@ -46,12 +45,18 @@ class GeocodeExperimentPage extends Component {
             ? result.results[0].geometry.location
             : false
           this.setState({
-            outputLocation,
+            mapOptions: {
+              zoom: 12,
+              center: outputLocation,
+            },
           })
         },
         error => {
           this.setState({
-            outputLocation: false,
+            mapOptions: {
+              zoom: 12,
+              center: false,
+            },
           })
         }
       )
@@ -66,7 +71,7 @@ class GeocodeExperimentPage extends Component {
         <GeocodeForm
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
-          outputLocation={this.state.outputLocation}
+          outputLocation={this.state.mapOptions.center}
         />
         <LeafletMap mapOptions={this.state.mapOptions} />
       </Layout>
