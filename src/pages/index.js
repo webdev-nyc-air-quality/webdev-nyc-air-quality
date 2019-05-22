@@ -103,16 +103,15 @@ class IndexPage extends Component {
     const datasets = [...this.state.datasets]
     const index = datasets.findIndex(dataset => dataset.active)
     const dataset = datasets[index]
-    datasets.addressInput = event.target.value
+    dataset.addressInput = event.target.value
     this.setState({ datasets })
   }
 
   handleAddressSubmit (event) {
     event.preventDefault()
-    const datasets = [...this.state.datasets]
-    const index = datasets.findIndex(dataset => dataset.active)
-    const address = datasets[index].address
-    if (address) this.doGeocodeAndUpdateMap(address)
+    const index = this.state.datasets.findIndex(dataset => dataset.active)
+    const addressInput = this.state.datasets[index].addressInput
+    if (addressInput) this.doGeocodeAndUpdateMap(addressInput)
     else console.log('Address is required for form submission')
   }
 
