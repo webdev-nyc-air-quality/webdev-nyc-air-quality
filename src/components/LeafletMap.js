@@ -18,13 +18,13 @@ if (typeof window !== 'undefined') {
   })
 }
 
-const LeafletMap = ({ mapOptions, children }) => (
+const LeafletMap = ({ dataset, children }) => (
   <>
     {typeof window !== 'undefined' && (
       <Map
         style={{ height: '100%', width: '100%' }}
-        center={mapOptions.center}
-        zoom={mapOptions.zoom}
+        center={dataset.mapOptions.center}
+        zoom={dataset.mapOptions.zoom}
       >
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

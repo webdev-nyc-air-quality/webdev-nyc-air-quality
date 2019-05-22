@@ -19,30 +19,51 @@ class IndexPage extends Component {
         name: 'Dataset-1',
         description: 'A short description of dataset-1',
         active: true,
+        mapOptions: {
+          zoom: 12,
+          center: {
+            lat: 40.8200471,
+            lng: -73.9492724,
+          },
+        },
       },
       {
         name: 'Dataset-2',
         description: 'A short description of dataset-2',
         active: false,
+        mapOptions: {
+          zoom: 12,
+          center: {
+            lat: 40.8447819,
+            lng: -73.8648268,
+          },
+        },
       },
       {
         name: 'Dataset-3',
         description: 'A short description of dataset-3',
         active: false,
+        mapOptions: {
+          zoom: 12,
+          center: {
+            lat: 40.7282239,
+            lng: -73.7948516,
+          },
+        },
       },
       {
         name: 'Dataset-4',
         description: 'A short description of dataset-4',
         active: false,
+        mapOptions: {
+          zoom: 12,
+          center: {
+            lat: 40.5795317,
+            lng: -74.1502007,
+          },
+        },
       },
     ],
-    mapOptions: {
-      zoom: 12,
-      center: {
-        lat: 40.8200471,
-        lng: -73.9492724,
-      },
-    },
   }
 
   constructor (props) {
@@ -85,9 +106,8 @@ class IndexPage extends Component {
         >
           <Col xs={8}>
             <Plots
-              data={this.props.data}
+              indexQueryData={this.props.data}
               datasets={this.state.datasets}
-              mapOptions={this.state.mapOptions}
             />
           </Col>
           <Col xs={4}>

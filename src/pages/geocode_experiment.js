@@ -73,7 +73,7 @@ class GeocodeExperimentPage extends Component {
           handleSubmit={this.handleSubmit}
           outputLocation={this.state.mapOptions.center}
         />
-        <LeafletMap mapOptions={this.state.mapOptions} />
+        <LeafletMap dataset={{ mapOptions: this.state.mapOptions }} />
       </Layout>
     )
   }
