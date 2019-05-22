@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button, Col, Form, Row } from 'react-bootstrap'
 
 const GeocodeForm = ({
   handleAddressInputChange,
@@ -13,16 +14,23 @@ const GeocodeForm = ({
         <span>{`lat: ${outputLocation.lat}, lng: ${outputLocation.lng}`}</span>
       )}
     </p>
-    <form onSubmit={handleAddressSubmit}>
-      <input
-        type='text'
-        name='address'
-        value={addressInput}
-        onChange={handleAddressInputChange}
-        placeholder='address'
-      />
-      <button type='submit'>Re-center map</button>
-    </form>
+    <Form onSubmit={handleAddressSubmit}>
+      <Row>
+        <Col>
+          <Form.Control
+            type='text'
+            name='address'
+            value={addressInput}
+            onChange={handleAddressInputChange}
+            placeholder='address'
+            required
+          />
+        </Col>
+        <Col>
+          <Button type='submit'>Re-center map</Button>
+        </Col>
+      </Row>
+    </Form>
   </div>
 )
 
