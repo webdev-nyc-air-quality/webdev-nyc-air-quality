@@ -26,6 +26,7 @@ class IndexPage extends Component {
             lng: -73.9492724,
           },
         },
+        addressInput: '',
       },
       {
         name: 'Dataset-2',
@@ -38,6 +39,7 @@ class IndexPage extends Component {
             lng: -73.8648268,
           },
         },
+        addressInput: '',
       },
       {
         name: 'Dataset-3',
@@ -50,6 +52,7 @@ class IndexPage extends Component {
             lng: -73.7948516,
           },
         },
+        addressInput: '',
       },
       {
         name: 'Dataset-4',
@@ -62,6 +65,7 @@ class IndexPage extends Component {
             lng: -74.1502007,
           },
         },
+        addressInput: '',
       },
     ],
   }
@@ -70,6 +74,9 @@ class IndexPage extends Component {
     super(props)
     this.setActiveTab = this.setActiveTab.bind(this)
     this.setActiveDataset = this.setActiveDataset.bind(this)
+    this.handleAddressInputChange = this.handleAddressInputChange.bind(this)
+    this.handleAddressSubmit = this.handleAddressSubmit.bind(this)
+    this.doGeocodeAndUpdateMap = this.doGeocodeAndUpdateMap.bind(this)
   }
 
   setActiveTab (tabName) {
@@ -90,6 +97,57 @@ class IndexPage extends Component {
       subpageTitle: datasetName,
       datasets,
     })
+  }
+
+  handleAddressInputChange (event) {
+    const datasets = [...this.state.datasets]
+    const index = datasets.findIndex(dataset => dataset.active)
+    const dataset = datasets[index]
+    datasets.addressInput = event.target.value
+    this.setState({ datasets })
+  }
+
+  handleAddressSubmit (event) {
+    event.preventDefault()
+    const datasets = [...this.state.datasets]
+    const index = datasets.findIndex(dataset => dataset.active)
+    const address = datasets[index].address
+    if (address) this.doGeocodeAndUpdateMap(address)
+    else console.log('Address is required for form submission')
+  }
+
+  doGeocodeAndUpdateMap (address) {
+    fetch(
+      `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${
+        process.env.GATSBY_GMAPS_API_KEY
+      }`
+    )
+      .then(res => res.json())
+      .then(
+        result => {
+          const outputLocation = result.results.length
+            ? result.results[0].geometry.location
+            : false
+          const datasets = [...this.state.datasets]
+          const index = datasets.findIndex(dataset => dataset.active)
+          const dataset = datasets[index]
+          dataset.mapOptions = {
+            zoom: 12,
+            center: outputLocation,
+          }
+          this.setState({ datasets })
+        },
+        error => {
+          const datasets = [...this.state.datasets]
+          const index = datasets.findIndex(dataset => dataset.active)
+          const dataset = datasets[index]
+          dataset.mapOptions = {
+            zoom: 12,
+            center: false,
+          }
+          this.setState({ datasets })
+        }
+      )
   }
 
   render () {
