@@ -80,7 +80,7 @@ class IndexPage extends Component {
   }
 
   setActiveTab (tabName) {
-    this.setState({ ...this.state, activeTab: tabName })
+    this.setState({ activeTab: tabName })
   }
 
   setActiveDataset (e) {
@@ -93,7 +93,6 @@ class IndexPage extends Component {
     datasets[index].active = true
 
     this.setState({
-      ...this.state,
       subpageTitle: datasetName,
       datasets,
     })
