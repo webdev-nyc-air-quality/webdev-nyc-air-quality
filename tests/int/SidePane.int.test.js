@@ -8,11 +8,58 @@ afterEach(cleanup)
 describe('SidePane component', () => {
   const props = {
     datasets: [
-      { name: 'ds1', description: 'd1'},
-      { name: 'ds2', description: 'd2'},
-      { name: 'ds3', description: 'd3'},
-      { name: 'ds4', description: 'd4'},
-      { name: 'ds5', description: 'd5'}
+      {
+        name: 'Dataset-1',
+        description: 'A short description of dataset-1',
+        active: true,
+        mapOptions: {
+          zoom: 12,
+          center: {
+            lat: 40.8200471,
+            lng: -73.9492724,
+          },
+        },
+        addressInput: '',
+      },
+      {
+        name: 'Dataset-2',
+        description: 'A short description of dataset-2',
+        active: false,
+        mapOptions: {
+          zoom: 12,
+          center: {
+            lat: 40.8447819,
+            lng: -73.8648268,
+          },
+        },
+        addressInput: '',
+      },
+      {
+        name: 'Dataset-3',
+        description: 'A short description of dataset-3',
+        active: false,
+        mapOptions: {
+          zoom: 12,
+          center: {
+            lat: 40.7282239,
+            lng: -73.7948516,
+          },
+        },
+        addressInput: '',
+      },
+      {
+        name: 'Dataset-4',
+        description: 'A short description of dataset-4',
+        active: false,
+        mapOptions: {
+          zoom: 12,
+          center: {
+            lat: 40.5795317,
+            lng: -74.1502007,
+          },
+        },
+        addressInput: '',
+      },
     ],
     setActiveTab: jest.fn(),
     activeKey: 2,
