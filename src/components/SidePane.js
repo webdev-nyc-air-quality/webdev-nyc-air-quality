@@ -17,6 +17,7 @@ const SidePane = props => (
       <GeocodeForm
         handleAddressInputChange={props.handleAddressInputChange}
         handleAddressSubmit={props.handleAddressSubmit}
+        addressInput={props.datasets[props.activeDatasetIndex].addressInput}
         outputLocation={
           props.datasets[props.activeDatasetIndex].mapOptions.center
         }
