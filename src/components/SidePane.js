@@ -1,6 +1,7 @@
 import React from 'react'
 import { Tabs, Tab } from 'react-bootstrap'
 
+import GeocodeForm from './GeocodeForm'
 import DatasetList from './DatasetList'
 import styles from './SidePane.css'
 
@@ -13,17 +14,13 @@ const SidePane = props => (
     className={styles.navTabs}
   >
     <Tab eventKey='settings' title='⚙️'>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquam
-      rutrum ipsum, eu fringilla elit malesuada sit amet. Aenean velit metus,
-      mollis id velit nec, aliquam sodales est. Nam dui orci, suscipit non
-      fringilla sit amet, condimentum sed turpis. Nulla facilisi. Morbi vitae
-      velit sem. Curabitur eleifend ligula quis sem mollis pretium. In
-      vestibulum nisi nunc. Nam rutrum sodales ipsum, id placerat ligula mattis
-      non. Maecenas vitae ultricies tortor. Nam vitae faucibus sem. Pellentesque
-      mollis a dolor non suscipit. Interdum et malesuada fames ac ante ipsum
-      primis in faucibus. Praesent faucibus metus sit amet urna iaculis, a
-      egestas dolor ultricies. Nulla eleifend posuere ipsum, non auctor libero
-      tempus eget. Suspendisse dignissim arcu vel gravida ultricies.
+      <GeocodeForm
+        handleAddressInputChange={props.handleAddressInputChange}
+        handleAddressSubmit={props.handleAddressSubmit}
+        outputLocation={
+          props.datasets[props.activeDatasetIndex].mapOptions.center
+        }
+      />
     </Tab>
     <Tab eventKey='list' title='List'>
       <DatasetList

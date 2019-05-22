@@ -1,10 +1,14 @@
 import React from 'react'
 
-const GeocodeForm = ({ handleChange, handleSubmit, outputLocation }) => (
+const GeocodeForm = ({
+  handleAddressInputChange,
+  handleAddressSubmit,
+  outputLocation,
+}) => (
   <div>
     <h4>Enter address:</h4>
-    <form onSubmit={handleSubmit}>
-      <input type='text' name='address' onChange={handleChange} />
+    <form onSubmit={handleAddressSubmit}>
+      <input type='text' name='address' onChange={handleAddressInputChange} />
       <button type='submit'>Submit</button>
     </form>
     <h4>Output:</h4>

@@ -169,6 +169,8 @@ class IndexPage extends Component {
           </Col>
           <Col xs={4}>
             <SidePane
+              handleAddressInputChange={this.handleAddressInputChange}
+              handleAddressSubmit={this.handleAddressSubmit}
               activeTab={this.state.activeTab}
               setActiveTab={this.setActiveTab}
               datasets={this.state.datasets}
