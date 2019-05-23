@@ -4,6 +4,7 @@ import { navigate } from '@reach/router'
 import { setUser, isLoggedIn } from '../utils/auth'
 import Error from './Error'
 import { Auth } from 'aws-amplify'
+import { Form, Button } from 'react-bootstrap'
 
 class Login extends React.Component {
   state = {
@@ -39,18 +40,41 @@ class Login extends React.Component {
     if (isLoggedIn()) navigate('/app/profile')
     return (
       <div>
-        <h1>Sign In</h1>
-        {this.state.error && <Error errorMessage={this.state.error} />}
-        <div style={styles.formContainer}>
-          <input
+        <Form style={styles.loginContainer}>
+          <h1>Sign In</h1>
+          {this.state.error && <Error errorMessage={this.state.error} />}
+          <div style={styles.formContainer}>
+            <Form.Group>
+              <Form.Label>Username</Form.Label>
+              <Form.Control
+                onChange={this.handleUpdate}
+                placeholder='Username'
+                name='username'
+                value={this.state.username}
+              />
+            </Form.Group>
+
+            {/* <input
             onChange={this.handleUpdate}
             placeholder='Username'
             name='username'
             value={this.state.username}
             style={styles.input}
             id='username-field'
-          />
-          <input
+          /> */}
+
+            <Form.Group>
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                onChange={this.handleUpdate}
+                placeholder='Password'
+                name='password'
+                type='password'
+                value={this.state.password}
+              />
+            </Form.Group>
+
+            {/* <input
             onChange={this.handleUpdate}
             placeholder='Password'
             name='password'
@@ -58,19 +82,33 @@ class Login extends React.Component {
             type='password'
             style={styles.input}
             id='password-field'
-          />
-          <div style={styles.button} onClick={this.login} id='login-link'>
+          /> */}
+            {/* <div style={styles.button} onClick={this.login} id='login-link'>
             <span style={styles.buttonText}>Sign In</span>
+          </div> */}
+            <Button onClick={this.login} id='login-link'>
+              Sign In
+            </Button>
+            <br />
           </div>
-        </div>
-        <Link to='/app/signup'>Sign Up</Link>
-        <br />
+          <Button>
+            Sign Up
+            <Link to='/app/signup' />
+          </Button>
+          <br />
+        </Form>
       </div>
     )
   }
 }
 
 const styles = {
+  loginContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '75%',
+    margin: 'auto',
+  },
   input: {
     height: 40,
     margin: '10px 0px',
