@@ -15,25 +15,35 @@ class CommentForm extends React.Component {
         validated={validated}
         onSubmit={e => this.handleSubmit(e)}
       >
-        <Form.Row>
-          <Col>
-            <Form.Control placeholder='First name' />
-          </Col>
-          <Col>
-            <Form.Control placeholder='Last name' />
-          </Col>
-        </Form.Row>
-        <Form.Label>Select Dataset</Form.Label>
-        <Form.Group>
-          <Form.Control as='select'>
-            <option>Cultural institutions</option>
-            <option>New york city collisions</option>
-            <option>New York city tubulation areas</option>
-            <option>Neighborhood vehicle idling</option>
-            <option>Other</option>
-          </Form.Control>
-        </Form.Group>
-        <Button type='submit'>Submit form</Button>
+        <div>
+          <br />
+          <Form.Row>
+            <Col>
+              <Form.Control placeholder='First name' />
+            </Col>
+            <Col>
+              <Form.Control placeholder='Last name' />
+            </Col>
+          </Form.Row>
+        </div>
+        <div>
+          <Form.Label>Select Dataset</Form.Label>
+          <Form.Group>
+            <Form.Control as='select'>
+              <option>Cultural institutions</option>
+              <option>New york city collisions</option>
+              <option>New York city tubulation areas</option>
+              <option>Neighborhood vehicle idling</option>
+              <option>Other</option>
+            </Form.Control>
+          </Form.Group>
+        </div>
+        <div className='form-group'>
+          <label> Comments</label>
+          <textarea className='form-control' rows='5' />
+        </div>
+
+        <Button type='submit'>Submit Comment</Button>
       </Form>
     )
   }
