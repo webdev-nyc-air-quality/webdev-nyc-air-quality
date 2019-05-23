@@ -2,29 +2,10 @@ import React from 'react'
 import { Card, Col, Row } from 'react-bootstrap'
 import userAvatar from '../../img/user-avatar.png'
 
-const comments = [
-  {
-    displayName: 'Sarah R.',
-    date: '2019-05-23',
-    text:
-      "Couldn't understand what the colors meant. Could someone explain the legend...",
-  },
-  {
-    displayName: 'Tom C.',
-    date: '2019-05-22',
-    text: 'Woah, I never heard of some of these cultural sites.',
-  },
-  {
-    displayName: 'Jenny L.',
-    date: '2019-05-21',
-    text: 'I wonder why the Lower East Side has so few cultural sites',
-  },
-]
-
-const Discussion = () => (
+const CommentList = () => (
   <>
-    {comments.map(({ displayName, date, text }) => (
-      <Card style={styles.card}>
+    {comments.map(({ displayName, date, text }, index) => (
+      <Card key={index} style={styles.card}>
         <Card.Title style={styles.cardTitle}>
           <Row>
             <Col xs={3}>
@@ -55,6 +36,25 @@ const Discussion = () => (
   </>
 )
 
+const comments = [
+  {
+    displayName: 'Sarah R.',
+    date: '2019-05-23',
+    text:
+      "Couldn't understand what the colors meant. Could someone explain the legend...",
+  },
+  {
+    displayName: 'Tom C.',
+    date: '2019-05-22',
+    text: 'Woah, I never heard of some of these cultural sites.',
+  },
+  {
+    displayName: 'Jenny L.',
+    date: '2019-05-21',
+    text: 'I wonder why the Lower East Side has so few cultural sites',
+  },
+]
+
 const styles = {
   card: {
     padding: '0.5rem 0',
@@ -70,4 +70,4 @@ const styles = {
   },
 }
 
-export default Discussion
+export default CommentList
