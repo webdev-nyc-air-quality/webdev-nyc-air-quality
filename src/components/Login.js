@@ -48,6 +48,7 @@ class Login extends React.Component {
             name='username'
             value={this.state.username}
             style={styles.input}
+            id='username-field'
           />
           <input
             onChange={this.handleUpdate}
@@ -56,8 +57,9 @@ class Login extends React.Component {
             value={this.state.password}
             type='password'
             style={styles.input}
+            id='password-field'
           />
-          <div style={styles.button} onClick={this.login}>
+          <div style={styles.button} onClick={this.login} id='login-link'>
             <span style={styles.buttonText}>Sign In</span>
           </div>
         </div>

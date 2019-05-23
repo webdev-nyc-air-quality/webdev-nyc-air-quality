@@ -42,12 +42,14 @@ const Header = ({ siteTitle, subpageTitle }) => (
             <NavDropdown.Item
               style={styles.blue}
               onClick={() => navigate('/app/signup')}
+              id='dropdown-signup-link'
             >
-              Register
+              Signup
             </NavDropdown.Item>
             <NavDropdown.Item
               style={styles.blue}
               onClick={() => navigate('/app/login')}
+              id='dropdown-login-link'
             >
               Login
             </NavDropdown.Item>

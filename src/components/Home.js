@@ -5,7 +5,8 @@ const Home = () => (
   <div>
     <h1>Home</h1>
     <p>
-      You are now logged in! <Link to='/app/profile'>View profile</Link>
+      <span id='greeting'>You are now logged in!</span>&nbsp;
+      <Link to='/app/profile'>View profile</Link>
     </p>
   </div>
 )
