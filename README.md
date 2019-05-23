@@ -9,9 +9,10 @@
 
 ## [Team repository link](https://github.com/webdev-nyc-air-quality/webdev-nyc-air-quality)
 
+## [Project documentation](https://webdev-nyc-air-quality.github.io/air-quality-docs/)
+
 ## [Deploy site url](https://master.d2mdn3yvvbw50z.amplifyapp.com)
 
-## [Documentation](https://webdev-nyc-air-quality.github.io/air-quality-docs/)
 
 ## Instructions to run the project
 ```bash
