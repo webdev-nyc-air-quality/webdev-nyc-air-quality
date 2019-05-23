@@ -31,6 +31,12 @@ const Header = ({ siteTitle, subpageTitle }) => (
             >
               Logout
             </NavDropdown.Item>
+            <NavDropdown.Item
+              style={styles.blue}
+              onClick={() => navigate('/app/profile')}
+            >
+              Profile
+            </NavDropdown.Item>
             <NavDropdown.Item style={styles.blue} onClick={() => navigate('/')}>
               Data sources
             </NavDropdown.Item>
