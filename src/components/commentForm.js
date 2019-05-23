@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Col, Form, FormGroup } from 'react-bootstrap'
+import { Button, Col, Form } from 'react-bootstrap'
 
 class CommentForm extends React.Component {
   constructor (props) {
