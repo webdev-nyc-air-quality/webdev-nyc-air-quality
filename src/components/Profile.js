@@ -17,10 +17,10 @@ const Profile = () => {
   return (
     <Row style={styles.profileContainer}>
       <Col>
-        <h1>Profile</h1>
+        <h1 id='main-heading'>Profile</h1>
         <p>Email: {user.email}</p>
         <p>Phone: {user.phone_number}</p>
-        <p>Username: {user.username}</p>
+        <p id='profile-username'>Username: {user.username}</p>
       </Col>
     </Row>
   )
