@@ -63,73 +63,48 @@ class SignUp extends React.Component {
                 <Form.Label>Username</Form.Label>
                 <Form.Control
                   onChange={this.handleUpdate}
-                  placeholder='Username'
+                  placeholder='Enter your username'
                   name='username'
                   value={this.state.username}
-                >
-                  {/* <input
-                  onChange={this.handleUpdate}
-                  placeholder='Username'
-                  name='username'
-                  value={this.state.username}
-                  style={styles.input}
-                /> */}
-                </Form.Control>
+                />
               </Form.Group>
+
               <Form.Group>
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                   onChange={this.handleUpdate}
-                  placeholder='Password'
+                  placeholder='Enter your password'
                   name='password'
                   type='password'
                   value={this.state.password}
                 />
+                <Form.Text>
+                  Your password need to be at lease 8 characters long, and must
+                  have uppercase characters(ABC), lowercase characters(abc) and
+                  symbol characters(*/?!).
+                </Form.Text>
               </Form.Group>
-              {/* <input
-              onChange={this.handleUpdate}
-              placeholder='Password'
-              name='password'
-              value={this.state.password}
-              type='password'
-              style={styles.input}
-            /> */}
+
               <Form.Group>
                 <Form.Label>Email</Form.Label>
                 <Form.Control
                   onChange={this.handleUpdate}
-                  placeholder='Email'
+                  placeholder='Enter your email address ~@mail.com'
                   name='email'
                   value={this.state.email}
                 />
               </Form.Group>
 
-              {/* <input
-              onChange={this.handleUpdate}
-              placeholder='Email'
-              name='email'
-              value={this.state.email}
-              style={styles.input}
-            /> */}
               <Form.Group>
                 <Form.Label>Phone Number</Form.Label>
                 <Form.Control
                   onChange={this.handleUpdate}
-                  placeholder='Phone Number'
+                  placeholder='+(area code)your phone number, i.e.+19998887777'
                   name='phone_number'
                   value={this.state.phone_number}
                 />
               </Form.Group>
-              {/* <input
-              onChange={this.handleUpdate}
-              placeholder='Phone Number'
-              name='phone_number'
-              value={this.state.phone_number}
-              style={styles.input}
-            /> */}
-              {/* <div style={styles.button} onClick={this.signUp}>
-              <span style={styles.buttonText}>Sign Up</span>
-            </div> */}
+
               <Button onClick={this.signUp}>Sign Up</Button>
               <br />
             </div>
@@ -147,17 +122,8 @@ class SignUp extends React.Component {
                 />
               </Form.Group>
 
-              {/* <input
-              onChange={this.handleUpdate}
-              placeholder='Authorization Code'
-              name='authCode'
-              value={this.state.authCode}
-              style={styles.input}
-            /> */}
-              {/* <div style={styles.button} onClick={this.confirmSignUp}>
-              <span style={styles.buttonText}>Confirm Sign Up</span>
-            </div> */}
               <Button onClick={this.confirmSignUp}>Confirm Sign Up</Button>
+              <br />
             </div>
           )}
 
