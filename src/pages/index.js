@@ -7,6 +7,7 @@ import config from '../aws-exports'
 import Layout from '../components/layout'
 import Plots from '../components/Plots'
 import SidePane from '../components/SidePane'
+import { getActiveDataset, getActiveDatasetIndex } from '../utils/misc'
 
 Amplify.configure(config)
 
@@ -100,16 +101,14 @@ class IndexPage extends Component {
 
   handleAddressInputChange (event) {
     const datasets = [...this.state.datasets]
-    const index = datasets.findIndex(dataset => dataset.active)
-    const dataset = datasets[index]
+    const dataset = getActiveDataset(datasets)
     dataset.addressInput = event.target.value
     this.setState({ datasets })
   }
 
   handleAddressSubmit (event) {
     event.preventDefault()
-    const index = this.state.datasets.findIndex(dataset => dataset.active)
-    const addressInput = this.state.datasets[index].addressInput
+    const addressInput = getActiveDataset(this.state.datasets).addressInput
     if (addressInput) this.doGeocodeAndUpdateMap(addressInput)
     else console.log('Address is required for form submission')
   }
@@ -127,8 +126,7 @@ class IndexPage extends Component {
             ? result.results[0].geometry.location
             : false
           const datasets = [...this.state.datasets]
-          const index = datasets.findIndex(dataset => dataset.active)
-          const dataset = datasets[index]
+          const dataset = getActiveDataset(datasets)
           dataset.mapOptions = {
             zoom: 12,
             center: outputLocation,
@@ -137,8 +135,7 @@ class IndexPage extends Component {
         },
         error => {
           const datasets = [...this.state.datasets]
-          const index = datasets.findIndex(dataset => dataset.active)
-          const dataset = datasets[index]
+          const dataset = getActiveDataset(datasets)
           dataset.mapOptions = {
             zoom: 12,
             center: false,
@@ -173,9 +170,7 @@ class IndexPage extends Component {
               activeTab={this.state.activeTab}
               setActiveTab={this.setActiveTab}
               datasets={this.state.datasets}
-              activeDatasetIndex={this.state.datasets.findIndex(
-                dataset => dataset.active
-              )}
+              activeDatasetIndex={getActiveDatasetIndex(this.state.datasets)}
               setActiveDataset={this.setActiveDataset}
             />
           </Col>
