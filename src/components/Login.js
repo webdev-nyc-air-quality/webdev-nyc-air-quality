@@ -51,6 +51,7 @@ class Login extends React.Component {
                 placeholder='Username'
                 name='username'
                 value={this.state.username}
+                id='username-field'
               />
             </Form.Group>
 
@@ -71,6 +72,7 @@ class Login extends React.Component {
                 name='password'
                 type='password'
                 value={this.state.password}
+                id='password-field'
               />
             </Form.Group>
 
