@@ -26,8 +26,10 @@ describe('E2E tests', () => {
     const usernameSelector = '#username-field'
     const passwordSelector = '#password-field'
     const loginSelector = '#login-link'
-    const greetingSelector = '#greeting'
-    const expectedText = 'You are now logged in!'
+    const mainHeadingSelector = '#main-heading'
+    const profileUsernameSelector = '#profile-username'
+    const expectedMainHeadingText = 'Profile'
+    const expectedProfileUsername = `Username: ${testUsername}`
 
     if (process.env.TEST_PLATFORM === 'mobile') {
       await page.waitForSelector(responsiveDropdownToggleSelector)
@@ -56,8 +58,12 @@ describe('E2E tests', () => {
       page.click(loginSelector)
     ]);
 
-    await page.waitForSelector(greetingSelector)
-    const actualText = await page.$eval(greetingSelector, el => el.innerText)
-    await expect(actualText).toBe(expectedText)
+    await page.waitForSelector(mainHeadingSelector)
+    let actualText = await page.$eval(mainHeadingSelector, el => el.innerText)
+    await expect(actualText).toBe(expectedMainHeadingText)
+
+    await page.waitForSelector(profileUsernameSelector)
+    actualText = await page.$eval(profileUsernameSelector, el => el.innerText)
+    await expect(actualText).toBe(expectedProfileUsername)
   })
 })
