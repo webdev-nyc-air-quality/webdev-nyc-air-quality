@@ -45,7 +45,6 @@ class Login extends React.Component {
           {this.state.error && <Error errorMessage={this.state.error} />}
           <div style={styles.formContainer}>
             <Form.Group>
-              <Form.Label>Username</Form.Label>
               <Form.Control
                 onChange={this.handleUpdate}
                 placeholder='Username'
@@ -56,7 +55,6 @@ class Login extends React.Component {
             </Form.Group>
 
             <Form.Group>
-              <Form.Label>Password</Form.Label>
               <Form.Control
                 onChange={this.handleUpdate}
                 placeholder='Password'
@@ -72,7 +70,7 @@ class Login extends React.Component {
             </Button>
             <br />
           </div>
-          <Button>
+          <Button variant='link'>
             Sign Up
             <Link to='/app/signup' />
           </Button>

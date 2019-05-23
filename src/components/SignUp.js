@@ -60,20 +60,18 @@ class SignUp extends React.Component {
             <div style={styles.formContainer}>
               {this.state.error && <Error errorMessage={this.state.error} />}
               <Form.Group>
-                <Form.Label>Username</Form.Label>
                 <Form.Control
                   onChange={this.handleUpdate}
-                  placeholder='Enter your username'
+                  placeholder='Username'
                   name='username'
                   value={this.state.username}
                 />
               </Form.Group>
 
               <Form.Group>
-                <Form.Label>Password</Form.Label>
                 <Form.Control
                   onChange={this.handleUpdate}
-                  placeholder='Enter your password'
+                  placeholder='Password'
                   name='password'
                   type='password'
                   value={this.state.password}
@@ -86,20 +84,18 @@ class SignUp extends React.Component {
               </Form.Group>
 
               <Form.Group>
-                <Form.Label>Email</Form.Label>
                 <Form.Control
                   onChange={this.handleUpdate}
-                  placeholder='Enter your email address ~@mail.com'
+                  placeholder='example@mail.com'
                   name='email'
                   value={this.state.email}
                 />
               </Form.Group>
 
               <Form.Group>
-                <Form.Label>Phone Number</Form.Label>
                 <Form.Control
                   onChange={this.handleUpdate}
-                  placeholder='+(area code)your phone number, i.e.+19998887777'
+                  placeholder='+15555555555'
                   name='phone_number'
                   value={this.state.phone_number}
                 />
@@ -127,7 +123,7 @@ class SignUp extends React.Component {
             </div>
           )}
 
-          <Button>
+          <Button variant='link'>
             Sign In
             <Link to='/app/login' />
           </Button>
