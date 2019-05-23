@@ -3,6 +3,7 @@ import { navigate } from '@reach/router'
 import { Link } from 'gatsby'
 import Error from './Error'
 import { Auth } from 'aws-amplify'
+import { Form, Button } from 'react-bootstrap'
 
 const initialState = {
   username: ``,
@@ -53,66 +54,91 @@ class SignUp extends React.Component {
   render () {
     return (
       <div>
-        <h1>Sign Up</h1>
-        {this.state.stage === 0 && (
-          <div style={styles.formContainer}>
-            {this.state.error && <Error errorMessage={this.state.error} />}
-            <input
-              onChange={this.handleUpdate}
-              placeholder='Username'
-              name='username'
-              value={this.state.username}
-              style={styles.input}
-            />
-            <input
-              onChange={this.handleUpdate}
-              placeholder='Password'
-              name='password'
-              value={this.state.password}
-              type='password'
-              style={styles.input}
-            />
-            <input
-              onChange={this.handleUpdate}
-              placeholder='Email'
-              name='email'
-              value={this.state.email}
-              style={styles.input}
-            />
-            <input
-              onChange={this.handleUpdate}
-              placeholder='Phone Number'
-              name='phone_number'
-              value={this.state.phone_number}
-              style={styles.input}
-            />
-            <div style={styles.button} onClick={this.signUp}>
-              <span style={styles.buttonText}>Sign Up</span>
+        <Form style={styles.signupContainer}>
+          <h1>Sign Up</h1>
+          {this.state.stage === 0 && (
+            <div style={styles.formContainer}>
+              {this.state.error && <Error errorMessage={this.state.error} />}
+              <Form.Group>
+                <Form.Control
+                  onChange={this.handleUpdate}
+                  placeholder='Username'
+                  name='username'
+                  value={this.state.username}
+                />
+              </Form.Group>
+
+              <Form.Group>
+                <Form.Control
+                  onChange={this.handleUpdate}
+                  placeholder='Password'
+                  name='password'
+                  type='password'
+                  value={this.state.password}
+                />
+                <Form.Text>
+                  Your password need to be at lease 8 characters long, and must
+                  have uppercase characters(ABC), lowercase characters(abc) and
+                  symbol characters(*/?!).
+                </Form.Text>
+              </Form.Group>
+
+              <Form.Group>
+                <Form.Control
+                  onChange={this.handleUpdate}
+                  placeholder='example@mail.com'
+                  name='email'
+                  value={this.state.email}
+                />
+              </Form.Group>
+
+              <Form.Group>
+                <Form.Control
+                  onChange={this.handleUpdate}
+                  placeholder='+15555555555'
+                  name='phone_number'
+                  value={this.state.phone_number}
+                />
+              </Form.Group>
+
+              <Button onClick={this.signUp}>Sign Up</Button>
+              <br />
             </div>
-          </div>
-        )}
-        {this.state.stage === 1 && (
-          <div style={styles.formContainer}>
-            {this.state.error && <Error errorMessage={this.state.error} />}
-            <input
-              onChange={this.handleUpdate}
-              placeholder='Authorization Code'
-              name='authCode'
-              value={this.state.authCode}
-              style={styles.input}
-            />
-            <div style={styles.button} onClick={this.confirmSignUp}>
-              <span style={styles.buttonText}>Confirm Sign Up</span>
+          )}
+          {this.state.stage === 1 && (
+            <div style={styles.formContainer}>
+              {this.state.error && <Error errorMessage={this.state.error} />}
+              <Form.Group>
+                <Form.Label>Authorization Code</Form.Label>
+                <Form.Control
+                  onChange={this.handleUpdate}
+                  placeholder='Authorization Code'
+                  name='authCode'
+                  value={this.state.authCode}
+                />
+              </Form.Group>
+
+              <Button onClick={this.confirmSignUp}>Confirm Sign Up</Button>
+              <br />
             </div>
-          </div>
-        )}
-        <Link to='/app/login'>Sign In</Link>
+          )}
+
+          <Button variant='link'>
+            <Link to='/app/login'>Sign In</Link>
+          </Button>
+        </Form>
       </div>
     )
   }
 }
 
 const styles = {
+  signupContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '75%',
+    margin: 'auto',
+  },
   input: {
     height: 40,
     margin: '10px 0px',
