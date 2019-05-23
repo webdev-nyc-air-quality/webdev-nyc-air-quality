@@ -13,11 +13,11 @@ Amplify.configure(config)
 class IndexPage extends Component {
   state = {
     activeTab: 'list',
-    subpageTitle: 'Dataset-1',
+    subpageTitle: 'Cultural Institutions',
     datasets: [
       {
-        name: 'Dataset-1',
-        description: 'A short description of dataset-1',
+        name: 'Cultural Institutions',
+        description: 'Cultural Institutions by block and lot',
         active: true,
         mapOptions: {
           zoom: 12,
