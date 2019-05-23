@@ -2,6 +2,9 @@ describe('E2E tests', () => {
   const url = 'https://master.d2mdn3yvvbw50z.amplifyapp.com'
   const testUsername = process.env.TEST_USERNAME
   const testPassword = process.env.TEST_PASSWORD
+  const bigTimeout = 60000
+  const smallTimeout = 500
+  jest.setTimeout(bigTimeout)
 
   beforeAll(async () => {
     await page.goto(url)
@@ -13,10 +16,11 @@ describe('E2E tests', () => {
   })
 
   it('should be titled "NYC Data Speaks"', async () => {
-    await expect(page.title()).resolves.toEqual(expect.stringContaining('NYC Data Speaks'))
+    await expect(page.title()).resolves.toContain('NYC Data Speaks')
   })
 
   test('should login successfully', async () => {
+    const responsiveDropdownToggleSelector = '.navbar-toggler'
     const dropdownToggleSelector = 'a.dropdown-toggle.nav-link'
     const dropdownLoginSelector = '#dropdown-login-link'
     const usernameSelector = '#username-field'
@@ -24,6 +28,12 @@ describe('E2E tests', () => {
     const loginSelector = '#login-link'
     const greetingSelector = '#greeting'
     const expectedText = 'You are now logged in!'
+
+    if (process.env.TEST_PLATFORM === 'mobile') {
+      await page.waitForSelector(responsiveDropdownToggleSelector)
+      await page.click(responsiveDropdownToggleSelector)
+      await page.waitFor(smallTimeout);
+    }
 
     await page.waitForSelector(dropdownToggleSelector)
     await page.click(dropdownToggleSelector)

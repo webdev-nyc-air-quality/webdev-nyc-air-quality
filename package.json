@@ -30,7 +30,8 @@
     "format": "prettier-standard '{src,tests}/**/*.js'",
     "test:unit": "jest -c tests/jest.unit.config.js unit",
     "test:int": "jest -c tests/jest.int.config.js int",
-    "test:e2e": "jest -c tests/jest.e2e.config.js e2e"
+    "test:e2e:desktop": "JEST_PUPPETEER_CONFIG=tests/jest-puppeteer.config.js TEST_PLATFORM=desktop jest -c tests/jest.e2e.config.js e2e",
+    "test:e2e:mobile": "JEST_PUPPETEER_CONFIG=tests/jest-puppeteer.config.js TEST_PLATFORM=mobile jest -c tests/jest.e2e.config.js e2e"
   },
   "devDependencies": {
     "babel-jest": "^24.8.0",
