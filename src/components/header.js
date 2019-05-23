@@ -37,7 +37,10 @@ const Header = ({ siteTitle, subpageTitle }) => (
             >
               Profile
             </NavDropdown.Item>
-            <NavDropdown.Item style={styles.blue} onClick={() => navigate('/')}>
+            <NavDropdown.Item
+              style={styles.blue}
+              onClick={() => navigate('/app/datasources')}
+            >
               Data sources
             </NavDropdown.Item>
           </NavDropdown>
@@ -59,7 +62,10 @@ const Header = ({ siteTitle, subpageTitle }) => (
             >
               Login
             </NavDropdown.Item>
-            <NavDropdown.Item style={styles.blue} onClick={() => navigate('/')}>
+            <NavDropdown.Item
+              style={styles.blue}
+              onClick={() => navigate('/app/datasources')}
+            >
               Data sources
             </NavDropdown.Item>
           </NavDropdown>
