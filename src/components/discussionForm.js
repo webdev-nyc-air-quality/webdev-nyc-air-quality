@@ -12,7 +12,6 @@ class DiscussionForm extends React.Component {
     }
     this.onButtonClick = this.onButtonClick.bind(this)
   }
-
   onButtonClick () {
     this.setState({
       showComponent: true,
@@ -45,7 +44,6 @@ class DiscussionForm extends React.Component {
               eget lacinia odio sem nec elit. Cras mattis consectetur purus sit
               amet fermentum.
             </p>
-
             <div className='d-flex justify-content-end'>
               <Button onClick={handleHide} variant='outline-primary'>
                 Hide
