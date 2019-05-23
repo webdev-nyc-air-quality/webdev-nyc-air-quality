@@ -82,6 +82,7 @@ class SignUp extends React.Component {
                   onChange={this.handleUpdate}
                   placeholder='Password'
                   name='password'
+                  type='password'
                   value={this.state.password}
                 />
               </Form.Group>
