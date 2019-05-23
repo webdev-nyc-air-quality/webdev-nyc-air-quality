@@ -29,7 +29,7 @@ class Login extends React.Component {
         username: user.username,
       }
       setUser(userInfo)
-      navigate('/app/home')
+      navigate('/app/profile')
     } catch (err) {
       this.setState({ error: err })
       console.log('error...: ', err)
