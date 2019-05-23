@@ -4,6 +4,7 @@ import { Tabs, Tab } from 'react-bootstrap'
 import GeocodeForm from './GeocodeForm'
 import DatasetList from './DatasetList'
 import styles from './SidePane.css'
+import CommentForm from './commentForm'
 
 const SidePane = props => (
   <Tabs
@@ -31,6 +32,7 @@ const SidePane = props => (
       />
     </Tab>
     <Tab eventKey='discuss' title='Discuss'>
+      <CommentForm />
       Vestibulum semper nec sem eget scelerisque. Morbi sem lorem, dictum non
       felis quis, condimentum congue sapien. Praesent eu feugiat metus, eget
       molestie purus. Duis varius ligula nibh, non bibendum dui hendrerit at.
