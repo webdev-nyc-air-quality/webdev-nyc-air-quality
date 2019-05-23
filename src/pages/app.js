@@ -6,6 +6,7 @@ import Layout from '../components/layout'
 import Profile from '../components/Profile'
 import Login from '../components/Login'
 import SignUp from '../components/SignUp'
+import DataSources from '../components/DataSources'
 import PrivateRoute from '../components/PrivateRoute'
 
 const App = ({ data }) => (
@@ -14,6 +15,7 @@ const App = ({ data }) => (
       <PrivateRoute path='/app/profile' component={Profile} />
       <Login path='/app/login' />
       <SignUp path='/app/signup' />
+      <DataSources path='/app/datasources' />
     </Router>
   </Layout>
 )
