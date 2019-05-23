@@ -21,55 +21,34 @@ class DiscussionForm extends React.Component {
     const handleHide = () => this.setState({ show: false })
     const handleShow = () => this.setState({ show: true })
     return (
-      <div>
-        <div>
-          <Alert show={this.state.show} variant='secondary'>
-            <Alert.Heading>Bob</Alert.Heading>
-            <p>
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula,
-              eget lacinia odio sem nec elit. Cras mattis consectetur purus sit
-              amet fermentum.
-            </p>
-            <hr />
-            <Alert.Heading>Peter</Alert.Heading>
-            <p>
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula,
-              eget lacinia odio sem nec elit. Cras mattis consectetur purus sit
-              amet fermentum.
-            </p>
-            <hr />
-            <Alert.Heading>jane</Alert.Heading>
-            <p>
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula,
-              eget lacinia odio sem nec elit. Cras mattis consectetur purus sit
-              amet fermentum.
-            </p>
-            <div className='d-flex justify-content-end'>
-              <Button onClick={handleHide} variant='outline-primary'>
-                Hide
-              </Button>
-              <Button variant='outline-primary'>Show more Comments</Button>
-            </div>
-          </Alert>
-          {!this.state.show && (
-            <Button onClick={handleShow} variant='outline-primary'>
-              Show Comments
-            </Button>
-          )}
-        </div>
-        <br />
-        <div>
-          <Button
-            onClick={this.onButtonClick}
-            variant='outline-primary'
-            size='lg'
-            block
-          >
-            Add Comments
+      <Alert show={this.state.show} variant='secondary'>
+        <Alert.Heading>Bob</Alert.Heading>
+        <p>
+          Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget
+          lacinia odio sem nec elit. Cras mattis consectetur purus sit amet
+          fermentum.
+        </p>
+        <hr />
+        <Alert.Heading>Peter</Alert.Heading>
+        <p>
+          Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget
+          lacinia odio sem nec elit. Cras mattis consectetur purus sit amet
+          fermentum.
+        </p>
+        <hr />
+        <Alert.Heading>jane</Alert.Heading>
+        <p>
+          Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget
+          lacinia odio sem nec elit. Cras mattis consectetur purus sit amet
+          fermentum.
+        </p>
+        <div className='d-flex justify-content-end'>
+          <Button onClick={handleHide} variant='outline-primary'>
+            Hide
           </Button>
-          {this.state.showComponent ? <CommentForm /> : null}
+          <Button variant='outline-primary'>Show more Comments</Button>
         </div>
-      </div>
+      </Alert>
     )
   }
 }
