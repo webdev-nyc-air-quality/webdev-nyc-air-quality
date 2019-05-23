@@ -21,7 +21,7 @@ describe('Header component', () => {
     isLoggedIn.mockReturnValue(false)
     const { container } = render(<Header />)
     const items = container.querySelectorAll('.dropdown-menu .dropdown-item')
-    expect(items[0].textContent).toBe('Register')
+    expect(items[0].textContent).toBe('Signup')
     expect(items[1].textContent).toBe('Login')
   })
 
