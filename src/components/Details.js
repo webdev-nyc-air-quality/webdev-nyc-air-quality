@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
+// import { Link } from 'gatsby'
 import { getCurrentUser } from '../utils/auth'
 
 const Home = () => {
@@ -11,7 +11,7 @@ const Home = () => {
       <p>Email: {user.email}</p>
       <p>Phone: {user.phone_number}</p>
       <p>Username: {user.username}</p>
-      <Link to='/app/home'>Home</Link>
+      {/* <Link to='/app/home'>Home</Link> */}
     </div>
   )
 }

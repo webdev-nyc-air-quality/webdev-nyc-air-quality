@@ -124,8 +124,7 @@ class SignUp extends React.Component {
           )}
 
           <Button variant='link'>
-            Sign In
-            <Link to='/app/login' />
+            <Link to='/app/login'>Sign In</Link>
           </Button>
         </Form>
       </div>
