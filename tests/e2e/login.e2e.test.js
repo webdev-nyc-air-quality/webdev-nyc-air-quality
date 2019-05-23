@@ -13,7 +13,7 @@ describe('E2E tests', () => {
   })
 
   it('should be titled "NYC Data Speaks"', async () => {
-    await expect(page.title()).resolves.toEqual(expect.stringContaining('NYC Data Speaks'))
+    await expect(page.title()).resolves.toContain('NYC Data Speaks')
   })
 
   test('should login successfully', async () => {
