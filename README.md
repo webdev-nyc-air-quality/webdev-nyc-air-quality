@@ -11,6 +11,8 @@
 
 ## [Deploy site url](https://master.d2mdn3yvvbw50z.amplifyapp.com)
 
+## [Documentation](https://webdev-nyc-air-quality.github.io/air-quality-docs/)
+
 ## Instructions to run the project
 ```bash
 # Make sure you have the Amplify CLI, yarn installed globally
