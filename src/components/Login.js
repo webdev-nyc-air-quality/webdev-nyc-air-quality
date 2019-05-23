@@ -55,15 +55,6 @@ class Login extends React.Component {
               />
             </Form.Group>
 
-            {/* <input
-            onChange={this.handleUpdate}
-            placeholder='Username'
-            name='username'
-            value={this.state.username}
-            style={styles.input}
-            id='username-field'
-          /> */}
-
             <Form.Group>
               <Form.Label>Password</Form.Label>
               <Form.Control
@@ -76,18 +67,6 @@ class Login extends React.Component {
               />
             </Form.Group>
 
-            {/* <input
-            onChange={this.handleUpdate}
-            placeholder='Password'
-            name='password'
-            value={this.state.password}
-            type='password'
-            style={styles.input}
-            id='password-field'
-          /> */}
-            {/* <div style={styles.button} onClick={this.login} id='login-link'>
-            <span style={styles.buttonText}>Sign In</span>
-          </div> */}
             <Button onClick={this.login} id='login-link'>
               Sign In
             </Button>
