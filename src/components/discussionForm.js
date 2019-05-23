@@ -67,7 +67,7 @@ class DiscussionForm extends React.Component {
             size='lg'
             block
           >
-            Add Comment
+            Add Comments
           </Button>
           {this.state.showComponent ? <CommentForm /> : null}
         </div>
