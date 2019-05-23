@@ -2,7 +2,7 @@ import React from 'react'
 import { getCurrentUser } from '../utils/auth'
 import { Row, Col } from 'react-bootstrap'
 
-const Home = () => {
+const Profile = () => {
   const styles = {
     profileContainer: {
       width: '80%',
@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <Row style={styles.profileContainer}>
       <Col>
-        <h1>Profile Details</h1>
+        <h1>Profile</h1>
         <p>Email: {user.email}</p>
         <p>Phone: {user.phone_number}</p>
         <p>Username: {user.username}</p>
@@ -26,4 +26,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Profile
