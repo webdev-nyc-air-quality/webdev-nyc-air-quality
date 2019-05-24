@@ -58,6 +58,7 @@ describe('E2E tests', () => {
       page.click(loginSelector)
     ]);
 
+    await page.waitFor(smallTimeout);
     await page.waitForSelector(mainHeadingSelector)
     let actualText = await page.$eval(mainHeadingSelector, el => el.innerText)
     await expect(actualText).toBe(expectedMainHeadingText)
