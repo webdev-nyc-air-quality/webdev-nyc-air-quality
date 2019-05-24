@@ -28,9 +28,10 @@ amplify configure
 amplify init
 amplify push
 # Run app locally
-yarn develop
+GATSBY_GMAPS_API_KEY=<API_KEY> yarn develop
 # Run tests
 yarn test:unit
 yarn test:int
-yarn test:e2e
+GATSBY_GMAPS_API_KEY=<API_KEY> TEST_USERNAME="<EXISTING_USERNAME>" TEST_PASSWORD="<EXISTING_PASSWORD>" yarn test:e2e:desktop
+GATSBY_GMAPS_API_KEY=<API_KEY> TEST_USERNAME="<EXISTING_USERNAME>" TEST_PASSWORD="<EXISTING_PASSWORD>" yarn test:e2e:mobile
 ```
